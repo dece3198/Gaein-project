@@ -2,25 +2,42 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
+using static UnityEngine.ParticleSystem;
 
-public class Chair : SeatManager
+public class Chair : MonoBehaviour
 {
-    public override void OnTriggerEnter(Collider other)
+    [SerializeField] GameObject guest = null;
+    public bool isSeat = true;
+    public bool isGuest = true;
+
+    public void OnTriggerEnter(Collider other)
     {
         if(other.GetComponent<Guest>() != null)
         {
-            other.GetComponent<NavMeshAgent>().ResetPath();
-            other.GetComponent<Animator>().Play("Sit");
-            other.transform.parent = this.gameObject.transform.parent;
+            if(isGuest)
+            {
+                guest = other.gameObject;
+                guest.transform.parent = this.gameObject.transform.parent;
+                guest.GetComponent<Guest>().ChangeState(new SitState());
+                isGuest = false;
+            }
         }
     }
 
-    private void OnTriggerStay(Collider other)
+
+    private void Update()
     {
-        if (other.GetComponent<Guest>() != null)
+        if(guest != null)
         {
-            other.transform.position = this.transform.position + new Vector3(0,3f,0);
-            other.transform.rotation = this.transform.rotation;
+            guest.transform.position = this.transform.position;
+            guest.transform.rotation = this.transform.rotation;
         }
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        isSeat = true;
+        isGuest = true;
+        guest = null;
     }
 }

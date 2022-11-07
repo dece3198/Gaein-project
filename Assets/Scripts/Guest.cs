@@ -38,6 +38,8 @@ public class SitState : BaseState
 {
     public override void Enter(Guest guest)
     {
+        guest.nav.ResetPath();
+        guest.animator.Play("Sit");
     }
 
     public override void Exit(Guest guest)
@@ -98,16 +100,21 @@ public class ReturnState : BaseState
 public class Guest : MonoBehaviour
 {
     [SerializeField] private Transform _startPos;
-    public Transform startPos { get { return _startPos; } }
-    [SerializeField] NavMeshAgent _nav;
-    public NavMeshAgent nav { get { return _nav; } }
+    public Transform startPos => _startPos;
+    private NavMeshAgent _nav;
+    public NavMeshAgent nav => _nav;
+    private Animator _animator;
+    public Animator animator => _animator;
+
     BaseState curState = null;
+
     GUEST_STATE guestState;
     
 
     private void Awake()
     {
         _nav = GetComponent<NavMeshAgent>();
+        _animator = GetComponent<Animator>();
     }
 
     private void OnEnable()
