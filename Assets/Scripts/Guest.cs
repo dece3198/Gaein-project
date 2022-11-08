@@ -40,6 +40,7 @@ public class SitState : BaseState
     {
         guest.nav.ResetPath();
         guest.animator.Play("Sit");
+        guest.ChangeState(new OrderState());
     }
 
     public override void Exit(Guest guest)
@@ -55,6 +56,9 @@ public class OrderState : BaseState
 {
     public override void Enter(Guest guest)
     {
+        int rand = Random.Range(0, guest.foodList.Count);
+        FoodManager.instance.Cooking(guest.foodList[rand]);
+        guest.canvas.gameObject.SetActive(true);
     }
 
     public override void Exit(Guest guest)
@@ -63,6 +67,7 @@ public class OrderState : BaseState
 
     public override void Update(Guest guest)
     {
+        guest.canvas.gameObject.SetActive(false);
     }
 }
 
@@ -101,6 +106,12 @@ public class Guest : MonoBehaviour
 {
     [SerializeField] private Transform _startPos;
     public Transform startPos => _startPos;
+    [SerializeField] private Canvas _canvas;
+    public Canvas canvas => _canvas;
+
+    public List<Food> menuList = new List<Food>();
+    public List<Food> foodList = new List<Food>();
+
     private NavMeshAgent _nav;
     public NavMeshAgent nav => _nav;
     private Animator _animator;
@@ -115,6 +126,7 @@ public class Guest : MonoBehaviour
     {
         _nav = GetComponent<NavMeshAgent>();
         _animator = GetComponent<Animator>();
+        _canvas.gameObject.SetActive(false);
     }
 
     private void OnEnable()

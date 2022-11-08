@@ -24,7 +24,6 @@ public class Chair : MonoBehaviour
         }
     }
 
-
     private void Update()
     {
         if(guest != null)
@@ -36,8 +35,11 @@ public class Chair : MonoBehaviour
 
     private void OnTriggerExit(Collider other)
     {
-        isSeat = true;
-        isGuest = true;
-        guest = null;
+        if(guest != null)
+        {
+            isSeat = true;
+            isGuest = true;
+            guest = null;
+        }
     }
 }
