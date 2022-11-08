@@ -7,48 +7,67 @@ public class Door : MonoBehaviour
 {
     [SerializeField] protected GameObject GKeyImage;
     [SerializeField] protected Animator animator;
-    protected bool isDoor = false;
-
-    public virtual void OnTriggerEnter(Collider other)
-    {
-        if(other.GetComponent<PlayerController>() != null)
-        {
-            isDoor = true;
-            GKeyImage.SetActive(true);
-        }
-        
-        if(other.GetComponent<Guest>() != null)
-        {
-            animator.Play("OpenDoorA");
-            StartCoroutine(DoorCo());
-        }
-    }
-
+    [SerializeField] protected LayerMask layerMask;
+    [SerializeField] protected Vector3 range;
+    [SerializeField] private bool isDoor = false;
 
     public virtual void Update()
     {
+        OpenDoor();
         if (isDoor)
         {
             if (Input.GetKeyDown(KeyCode.G))
             {
-                animator.Play("OpenDoorA");
+                animator.SetBool("DoorA", true);
                 StartCoroutine(DoorCo());
             }
         }
+
+        if (animator.GetCurrentAnimatorStateInfo(0).IsName("OpenDoorA") || animator.GetCurrentAnimatorStateInfo(0).IsName("OpenDoorB"))
+        {
+            GKeyImage.gameObject.SetActive(false);
+        }
     }
 
-    protected void OnTriggerExit(Collider other)
+    public virtual void OpenDoor()
     {
-        if (other.GetComponent<PlayerController>() != null)
+        Collider[] target = Physics.OverlapBox(transform.position, range, transform.rotation, layerMask);
+
+        if (target.Length <= 0)
         {
-            isDoor = false;
-            GKeyImage.SetActive(false);
+            return;
+        }
+        else if (target.Length > 0)
+        {
+            for (int i = 0; i < target.Length; i++)
+            {
+                Guest guest = target[i].GetComponent<Guest>();
+                PlayerController playerControllerA = target[i].GetComponent<PlayerController>();
+
+                if (guest != null)
+                {
+                    animator.SetBool("DoorA", true);
+                    StartCoroutine(DoorCo());
+                }
+                if (playerControllerA != null)
+                {
+                    GKeyImage.gameObject.SetActive(true);
+                    isDoor = true;
+                }
+            }
         }
     }
 
     public virtual IEnumerator DoorCo()
     {
         yield return new WaitForSeconds(5f);
-        animator.Play("CloseDoorA");
+        animator.SetBool("DoorA", false);
+        isDoor = false;
+    }
+
+    protected void OnDrawGizmosSelected()
+    {
+        Gizmos.color = Color.red;
+        Gizmos.DrawWireCube(transform.position, range);
     }
 }

@@ -4,54 +4,46 @@ using UnityEngine;
 
 public class OutDoor : Door
 {
-    [SerializeField] private LayerMask layerMask;
-    [SerializeField] private Vector3 range;
+    [SerializeField] private bool isOutDoor = false;
 
-    private void Molra()
+    public override void Update()
     {
-        Collider[] target = Physics.OverlapBox(transform.position, range, transform.rotation, layerMask);
-
-        if(target.Length <= 0)
+        OpenDoor();
+        if (isOutDoor)
         {
-            return;
-        }
-        else if(target.Length > 0)
-        {
-            for(int i = 0; i < target.Length; i++)
+            if (Input.GetKeyDown(KeyCode.G))
             {
-                Guest guest = target[i].GetComponent<Guest>();
-                PlayerController playerController = target[i].GetComponent<PlayerController>();
-
-                if(guest != null)
-                {
-                    animator.SetBool("DoorB", true);
-                    StartCoroutine(DoorCo());
-                    guest = null;
-                }
-                if(playerController != null)
-                {
-                    GKeyImage.gameObject.SetActive(true);
-                    isDoor = true;
-                    playerController = null;
-                }
+                animator.SetBool("DoorB", true);
+                StartCoroutine(DoorCo());
             }
         }
     }
 
-
-
-
-    public override void Update()
+    public override void OpenDoor()
     {
+        Collider[] target = Physics.OverlapBox(transform.position, range, transform.rotation, layerMask);
 
-        Molra();
-        if (isDoor)
+        if (target.Length <= 0)
         {
-            if (Input.GetKeyDown(KeyCode.G))
+            return;
+        }
+        else if (target.Length > 0)
+        {
+            for (int i = 0; i < target.Length; i++)
             {
-                GKeyImage.gameObject.SetActive(false);
-                animator.SetBool("DoorB", true);
-                StartCoroutine(DoorCo());
+                Guest guest = target[i].GetComponent<Guest>();
+                PlayerController playerControllerB = target[i].GetComponent<PlayerController>();
+
+                if (guest != null)
+                {
+                    animator.SetBool("DoorB", true);
+                    StartCoroutine(DoorCo());
+                }
+                if (playerControllerB != null)
+                {
+                    GKeyImage.gameObject.SetActive(true);
+                    isOutDoor = true;
+                }
             }
         }
     }
@@ -59,13 +51,7 @@ public class OutDoor : Door
     public override IEnumerator DoorCo()
     {
         yield return new WaitForSeconds(5f);
-        animator.SetBool("DoorB",false);
-        isDoor = false;
-    }
-
-    private void OnDrawGizmosSelected()
-    {
-        Gizmos.color = Color.red;
-        Gizmos.DrawWireCube(transform.position, range);
+        animator.SetBool("DoorB", false);
+        isOutDoor = false;
     }
 }
