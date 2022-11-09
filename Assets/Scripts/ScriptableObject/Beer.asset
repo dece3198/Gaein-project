@@ -1,0 +1,18 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ddb0737f13f2e154497020ab717a03ee, type: 3}
+  m_Name: Beer
+  m_EditorClassIdentifier: 
+  foodName: Beer
+  foodImage: {fileID: -1564694876, guid: 831a73385b242c74494f43b319707103, type: 3}
+  prefab: {fileID: 7811018803685770401, guid: 3aa9ec57e43cddc4189e8f443bb03f43, type: 3}
+  foodType: 2

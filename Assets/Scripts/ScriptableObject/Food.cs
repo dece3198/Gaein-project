@@ -8,4 +8,11 @@ public class Food : ScriptableObject
     public string foodName;
     public Sprite foodImage;
     public GameObject prefab;
+    public enum FOOD_TYPE
+    {
+        Stew,ApplePie,Beer
+    }
+
+    public FOOD_TYPE foodType;
+
 }

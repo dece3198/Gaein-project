@@ -13,5 +13,6 @@ MonoBehaviour:
   m_Name: Stew
   m_EditorClassIdentifier: 
   foodName: Stew
-  foodImage: {fileID: 628865548, guid: 2a143fd2ce121cf4a8a0c2e7ed5f533f, type: 3}
+  foodImage: {fileID: 58732533, guid: 0112637fc8a573445b6882b1de121601, type: 3}
   prefab: {fileID: 8578576633347433630, guid: 9e7adfcf2d34c4842a1fa8b336f86e75, type: 3}
+  foodType: 0
