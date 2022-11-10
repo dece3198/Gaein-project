@@ -168,6 +168,10 @@ public class ReturnState : BaseState<Guest>
 {
     public override void Enter(Guest guest)
     {
+        guest.transform.parent = guest.parent;
+        guest.animator.Play("Walk");
+        FoodManager.instance.EnterPool(guest.foodPos.transform.GetChild(0).GetComponent<FoodPickUp>().food.foodType, guest.foodPos.transform.GetChild(0).gameObject);
+        guest.nav.SetDestination(guest.returnPos.position);
     }
 
     public override void Exit(Guest guest)
@@ -189,7 +193,10 @@ public class Guest : MonoBehaviour
     [SerializeField] private Image _foodImage;
     public Image foodImage => _foodImage;
 
-    [SerializeField] private Transform ReturnPos;
+    [SerializeField] private Transform _parent;
+    public Transform parent => _parent;
+    [SerializeField] private Transform _returnPos;
+    public Transform returnPos => _returnPos;
     public GameObject foodPos;
 
 
