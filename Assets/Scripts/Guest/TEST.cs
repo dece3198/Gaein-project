@@ -17,8 +17,8 @@ public class TEST : MonoBehaviour
                 int rand = Random.Range(0, seatPos.Count);
                 if (seatPos[rand].GetComponent<Chair>().isSit)
                 {
-                    seatPos[rand].GetComponent<Chair>().beforeSit = true;
                     seatPos[rand].GetComponent<Chair>().isSit = false;
+                    seatPos[rand].GetComponent<Chair>().guest = other.GetComponent<Guest>();
                     other.GetComponent<NavMeshAgent>().SetDestination(seatPos[rand].position);
                     Debug.Log(rand);
                     break;

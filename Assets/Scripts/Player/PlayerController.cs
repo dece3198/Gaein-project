@@ -18,11 +18,25 @@ public class PlayerController : MonoBehaviour
     private void Update()
     {
         Move();
+        Gravity();
     }
 
     private void Move()
     {
         moveVec = (Input.GetAxis("Horizontal") * transform.right + Input.GetAxis("Vertical") * transform.forward) * moveSpeed;
         controller.Move(moveVec * Time.deltaTime);
+    }
+
+    private void Gravity()
+    {
+        if (controller.isGrounded)
+        {
+            moveY = 0;
+        }
+        else
+        {
+            moveY += Physics.gravity.y * Time.deltaTime;
+        }
+        controller.Move(Vector3.up * moveY * Time.deltaTime);
     }
 }

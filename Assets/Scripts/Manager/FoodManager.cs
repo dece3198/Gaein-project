@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using static Food;
 
 public class FoodManager : MonoBehaviour
 {
@@ -12,11 +13,20 @@ public class FoodManager : MonoBehaviour
     public List<GameObject> applePie = new List<GameObject>();
     public List<GameObject> beer = new List<GameObject>();
 
+    Dictionary<FOOD_TYPE, List<GameObject>> poolDic = new Dictionary<Food.FOOD_TYPE, List<GameObject>>();
+    Dictionary<FOOD_TYPE, float> foodTime = new Dictionary<FOOD_TYPE, float>();
     private int foodNumber = 0;
 
     private void Awake()
     {
         instance = this;
+        poolDic.Add(Food.FOOD_TYPE.Stew, stews);
+        poolDic.Add(Food.FOOD_TYPE.ApplePie, applePie);
+        poolDic.Add(Food.FOOD_TYPE.Beer, beer);
+        foodTime.Add(FOOD_TYPE.Stew, 15f);
+        foodTime.Add(FOOD_TYPE.ApplePie, 15f);
+        foodTime.Add(FOOD_TYPE.Beer, 5f);
+
     }
 
     private void Start()
@@ -43,11 +53,17 @@ public class FoodManager : MonoBehaviour
     {
         StartCoroutine(CookintCo(food));
     }
+    public void EnterPool(Food.FOOD_TYPE foodType,GameObject intputObj)
+    {
+        intputObj.SetActive(false);
+        intputObj.transform.parent = transform;
+        poolDic[foodType].Add(intputObj);
+    }
 
     //주문을 받으면 15초 뒤에 알맞는 요리타입의 함수가 실행됨
     IEnumerator CookintCo(Food food)
     {
-        yield return new WaitForSeconds(15f);
+        yield return new WaitForSeconds(foodTime[food.foodType]);
         switch (food.foodType)
         {
             case Food.FOOD_TYPE.Stew : FoodType(stews, 0); break;
@@ -70,16 +86,19 @@ public class FoodManager : MonoBehaviour
     }
 
     //주문한 요리가 랜덤한 위치에 생성이 됨
-    private void FoodType(List<GameObject> list, int number)
+    private GameObject FoodType(List<GameObject> list, int number)
     {
         if(list.Count <= foodNumber)
         {
             Refill(list, number);
         }
         int rand = Random.Range(0, transforms.Count);
-        list[foodNumber].SetActive(true);
-        list[foodNumber].transform.position = transforms[rand].position;
+        GameObject getFood = list[0];
+        list.Remove(list[0]);
+        getFood.SetActive(true);
+        getFood.transform.position = transforms[rand].position;
         foodNumber++;
+        return getFood;
     }
 
     //생성될 요리가 부족하면 리필

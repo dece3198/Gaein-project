@@ -14,7 +14,7 @@ public class ActionController : MonoBehaviour
     {
         Debug.DrawRay(transform.position, transform.forward * 5f,Color.red);
 
-        if (Physics.Raycast(transform.position, transform.forward, out hitInfo, 5f, layerMask))
+        if (Physics.SphereCast(transform.position,0.2f, transform.forward, out hitInfo,1f, layerMask))
         {
             if(hitInfo.transform.GetComponent<Guest>() != null)
             {
@@ -22,10 +22,19 @@ public class ActionController : MonoBehaviour
                 {
                     if(Input.GetKeyDown(KeyCode.G))
                     {
-                        hitInfo.transform.GetComponent<Guest>().ChangeState(new EatState());
-                        FoodManager.instance.stews.Add(playerHand.GetChild(0).gameObject);
-                        playerHand.GetChild(0).gameObject.SetActive(false);
-                        playerHand.GetChild(0).gameObject.transform.parent = FoodManager.instance.gameObject.transform;
+                        if(hitInfo.transform.GetComponent<Guest>().guestState == GUEST_STATE.Order)
+                        {
+                            playerHand.GetChild(0).gameObject.transform.parent = hitInfo.transform.GetComponent<Guest>().foodPos.transform;
+                            hitInfo.transform.GetComponent<Guest>().ChangeState(GUEST_STATE.Eat);
+                            isHold = false;
+                        }
+
+                        if(hitInfo.transform.GetComponent<Guest>().guestState == GUEST_STATE.DrinkOrder)
+                        {
+                            playerHand.GetChild(0).gameObject.transform.parent = hitInfo.transform.GetComponent<Guest>().foodPos.transform;
+                            hitInfo.transform.GetComponent<Guest>().ChangeState(GUEST_STATE.DrinkEat);
+                            isHold = false;
+                        }
                     }
                 }
             }
