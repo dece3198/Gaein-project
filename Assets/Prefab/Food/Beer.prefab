@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 7788854374951866463}
   - component: {fileID: 7796429423819732417}
   - component: {fileID: 7819575131414547493}
+  - component: {fileID: -8225251945237277019}
   m_Layer: 0
   m_Name: Beer
   m_TagString: Untagged
@@ -98,3 +99,16 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: 43079635209427286, guid: c47f03dacdff6cb409cf982e9b5206ef, type: 2}
+--- !u!114 &-8225251945237277019
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7811018803685770401}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cdab9e82e4d76a641a94dec51096244b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  food: {fileID: 11400000, guid: 5bbf33c0bc018b1458d620b26b589007, type: 2}

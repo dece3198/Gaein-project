@@ -8,6 +8,7 @@ public class ActionController : MonoBehaviour
     [SerializeField] Transform playerHand;
     RaycastHit hitInfo;
     Vector3 handPos = new Vector3(0, 0, 0);
+
     bool isHold = false;
     private void Interaction()
     {
@@ -23,6 +24,7 @@ public class ActionController : MonoBehaviour
                     {
                         hitInfo.transform.GetComponent<Guest>().ChangeState(new EatState());
                         FoodManager.instance.stews.Add(playerHand.GetChild(0).gameObject);
+                        playerHand.GetChild(0).gameObject.SetActive(false);
                         playerHand.GetChild(0).gameObject.transform.parent = FoodManager.instance.gameObject.transform;
                     }
                 }

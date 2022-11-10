@@ -41,6 +41,7 @@ public class Chair : MonoBehaviour
         {
             return;
         }
+
         if (isGuest && beforeSit)
         {
             guest = target[0].GetComponent<Guest>();
