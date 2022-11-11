@@ -15,4 +15,6 @@ MonoBehaviour:
   foodName: Beer
   foodImage: {fileID: -1564694876, guid: 831a73385b242c74494f43b319707103, type: 3}
   prefab: {fileID: 7811018803685770401, guid: 3aa9ec57e43cddc4189e8f443bb03f43, type: 3}
+  Price: 50
   foodType: 2
+  goldType: 2

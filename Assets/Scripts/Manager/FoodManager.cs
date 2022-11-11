@@ -51,6 +51,21 @@ public class FoodManager : MonoBehaviour
     //손님한테서 주문을 받음
     public void Cooking(Food food)
     {
+        for(int i = 0; i < ingredients.Count; i++)
+        {
+            for(int j = 0; j < food.recipe.Count; j++)
+            {
+                if (food.recipe[j] == ingredients[i])
+                {
+                    if((ingredients[i].Count -= 0.2f) < 0)
+                    {
+                        food = beer[0].GetComponent<FoodPickUp>().food;
+                        return;
+                    }
+                    ingredients[i].Count -= 0.2f;
+                }
+            }
+        }
         StartCoroutine(CookintCo(food));
     }
     public void EnterPool(Food.FOOD_TYPE foodType,GameObject intputObj)

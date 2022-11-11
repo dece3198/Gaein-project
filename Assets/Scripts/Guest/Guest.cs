@@ -186,6 +186,8 @@ public class ReturnState : BaseState<Guest>
 
 public class Guest : MonoBehaviour
 {
+    public static Guest instance;
+
     [SerializeField] private Transform _startPos;
     public Transform startPos => _startPos;
     [SerializeField] private Canvas _canvas;
@@ -199,8 +201,6 @@ public class Guest : MonoBehaviour
     public Transform returnPos => _returnPos;
     public GameObject foodPos;
 
-
-    public List<Food> menuList = new List<Food>();
     public List<Food> foodList = new List<Food>();
     public List<Food> alcoholList = new List<Food>();
 
@@ -209,7 +209,7 @@ public class Guest : MonoBehaviour
     private Animator _animator;
     public Animator animator => _animator;
 
-
+    public bool ispie = false;
 
     [SerializeField] private GUEST_STATE _guestState;
     public GUEST_STATE guestState => _guestState;
@@ -218,6 +218,7 @@ public class Guest : MonoBehaviour
 
     private void Awake()
     {
+        instance = this;
         _nav = GetComponent<NavMeshAgent>();
         _animator = GetComponent<Animator>();
         _canvas.gameObject.SetActive(false);
