@@ -59,7 +59,7 @@ public class OrderState : BaseState<Guest>
     public override void Enter(Guest guest)
     {
         int rand = Random.Range(0, guest.foodList.Count);
-        FoodManager.instance.Cooking(guest.foodList[rand]);
+        FoodManager.Instance.Cooking(guest.foodList[rand]);
         guest.canvas.gameObject.SetActive(true);
         guest.foodImage.gameObject.SetActive(true);
         guest.foodImage.sprite = guest.foodList[rand].foodImage;
@@ -115,13 +115,13 @@ public class DrinkOrderState : BaseState<Guest>
 {
     public override void Enter(Guest guest)
     {
-        FoodManager.instance.EnterPool(guest.foodPos.transform.GetChild(0).GetComponent<FoodPickUp>().food.foodType, guest.foodPos.transform.GetChild(0).gameObject);
+        FoodManager.Instance.EnterPool(guest.foodPos.transform.GetChild(0).GetComponent<FoodPickUp>().food.foodType, guest.foodPos.transform.GetChild(0).gameObject);
         guest.animator.Play("Order");
         int rand = Random.Range(0, guest.alcoholList.Count);
         guest.canvas.gameObject.SetActive(true);
         guest.foodImage.gameObject.SetActive(true);
         guest.foodImage.sprite = guest.alcoholList[rand].foodImage;
-        FoodManager.instance.Drink(guest.alcoholList[rand]);
+        FoodManager.Instance.Drink(guest.alcoholList[rand]);
     }
 
     public override void Exit(Guest guest)
@@ -170,7 +170,7 @@ public class ReturnState : BaseState<Guest>
     {
         guest.transform.parent = guest.parent;
         guest.animator.Play("Walk");
-        FoodManager.instance.EnterPool(guest.foodPos.transform.GetChild(0).GetComponent<FoodPickUp>().food.foodType, guest.foodPos.transform.GetChild(0).gameObject);
+        FoodManager.Instance.EnterPool(guest.foodPos.transform.GetChild(0).GetComponent<FoodPickUp>().food.foodType, guest.foodPos.transform.GetChild(0).gameObject);
         guest.nav.SetDestination(guest.returnPos.position);
     }
 
@@ -186,8 +186,6 @@ public class ReturnState : BaseState<Guest>
 
 public class Guest : MonoBehaviour
 {
-    public static Guest instance;
-
     [SerializeField] private Transform _startPos;
     public Transform startPos => _startPos;
     [SerializeField] private Canvas _canvas;
@@ -201,6 +199,7 @@ public class Guest : MonoBehaviour
     public Transform returnPos => _returnPos;
     public GameObject foodPos;
 
+    public List<Food> menuList = new List<Food>();
     public List<Food> foodList = new List<Food>();
     public List<Food> alcoholList = new List<Food>();
 
@@ -218,7 +217,6 @@ public class Guest : MonoBehaviour
 
     private void Awake()
     {
-        instance = this;
         _nav = GetComponent<NavMeshAgent>();
         _animator = GetComponent<Animator>();
         _canvas.gameObject.SetActive(false);

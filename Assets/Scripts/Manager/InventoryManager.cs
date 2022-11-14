@@ -14,13 +14,7 @@ public class InventoryManager : MonoBehaviour
     {
         for(int i = 0; i < Count.Count; i++)
         {
-            for (int j = 0; j < Ingredients.Count; j++)
-            {
-                if (Count[i].transform.parent.GetComponent<Image>().sprite == Ingredients[j].image)
-                {
-                    Count[i].text = Ingredients[i].Count.ToString();
-                }
-            }
+            Count[i].text = Ingredients[i].Count.ToString();
         }
     }
 }

@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ddb0737f13f2e154497020ab717a03ee, type: 3}
+  m_Name: ApplePie
+  m_EditorClassIdentifier: 
+  foodName: ApplePie
+  foodImage: {fileID: -1623438361, guid: 206b1c22ec5009c41b7ce3ae1f40cd25, type: 3}
+  prefab: {fileID: 3099831194314830739, guid: 6f9edfa0c1ebaab4dba513a9d3e9e731, type: 3}
+  Price: 50
+  recipe:
+  - {fileID: 11400000, guid: 7e5278d8ca6b9e54fb4c812c73c2ef5a, type: 2}
+  - {fileID: 11400000, guid: 71c5dd2c959ee414f9ce57260962fa90, type: 2}
+  - {fileID: 11400000, guid: c997bbf22ddd8694d887773b97214684, type: 2}
+  - {fileID: 11400000, guid: d846f6a7a7ff80345b4b40556c4faf8e, type: 2}
+  foodType: 1
+  goldType: 1

@@ -3,9 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using static Food;
 
-public class FoodManager : MonoBehaviour
+public class FoodManager : Singleton<FoodManager>
 {
-    public static FoodManager instance;
     public List<Ingredients> ingredients = new List<Ingredients>();
     public List<Food> foodList = new List<Food>();
     public List<Transform> transforms = new List<Transform>();
@@ -19,13 +18,17 @@ public class FoodManager : MonoBehaviour
 
     private void Awake()
     {
-        instance = this;
         poolDic.Add(Food.FOOD_TYPE.Stew, stews);
         poolDic.Add(Food.FOOD_TYPE.ApplePie, applePie);
         poolDic.Add(Food.FOOD_TYPE.Beer, beer);
         foodTime.Add(FOOD_TYPE.Stew, 15f);
         foodTime.Add(FOOD_TYPE.ApplePie, 15f);
         foodTime.Add(FOOD_TYPE.Beer, 5f);
+
+        for(int i = 0; i < ingredients.Count; i++)
+        {
+            ingredients[i].Count = 5;
+        }
 
     }
 
@@ -51,21 +54,37 @@ public class FoodManager : MonoBehaviour
     //손님한테서 주문을 받음
     public void Cooking(Food food)
     {
-        for(int i = 0; i < ingredients.Count; i++)
+        if(food.type == TYPE.Alcohol)
         {
-            for(int j = 0; j < food.recipe.Count; j++)
+            StartCoroutine(CookintCo(food));
+            return;
+        }
+
+        for(int i = 0; i < food.recipe.Count; i++)
+        {
+            for(int j = 0; j < ingredients.Count; j++)
             {
-                if (food.recipe[j] == ingredients[i])
+                if (food.recipe[i] == ingredients[j])
                 {
-                    if((ingredients[i].Count -= 0.2f) < 0)
+                    if(ingredients[j].Count < 0.2f)
                     {
-                        food = beer[0].GetComponent<FoodPickUp>().food;
+                        StartCoroutine(CookintCo(foodList[1]));
                         return;
                     }
-                    ingredients[i].Count -= 0.2f;
                 }
             }
         }
+        for (int i = 0; i < food.recipe.Count; i++)
+        {
+            for (int j = 0; j < ingredients.Count; j++)
+            {
+                if (food.recipe[i] == ingredients[j])
+                {
+                    ingredients[j].Count -= 0.2f;
+                }
+            }
+        }
+
         StartCoroutine(CookintCo(food));
     }
     public void EnterPool(Food.FOOD_TYPE foodType,GameObject intputObj)
@@ -78,6 +97,7 @@ public class FoodManager : MonoBehaviour
     //주문을 받으면 15초 뒤에 알맞는 요리타입의 함수가 실행됨
     IEnumerator CookintCo(Food food)
     {
+        GoldManager.Instance.Plus(food);
         yield return new WaitForSeconds(foodTime[food.foodType]);
         switch (food.foodType)
         {

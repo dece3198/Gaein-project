@@ -12,8 +12,7 @@ public class ActionController : MonoBehaviour
     bool isHold = false;
     private void Interaction()
     {
-        Debug.DrawRay(transform.position, transform.forward * 5f,Color.red);
-
+        Debug.DrawRay(transform.position, transform.forward * 1f,Color.red);
         if (Physics.SphereCast(transform.position,0.2f, transform.forward, out hitInfo,1f, layerMask))
         {
             if(hitInfo.transform.GetComponent<Guest>() != null)

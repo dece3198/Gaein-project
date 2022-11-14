@@ -3,16 +3,14 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class UIManager : MonoBehaviour
+public class UIManager : Singleton<UIManager>
 {
-    public static UIManager instance;
     public static bool inventoryActivated = false;
     [SerializeField] private GameObject mainUI;
     public Button curButton;
 
     private void Awake()
     {
-        instance = this;
         mainUI.SetActive(false);
     }
 

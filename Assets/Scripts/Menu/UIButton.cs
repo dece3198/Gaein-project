@@ -2,10 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.Events;
 
-public class UIButton : MonoBehaviour
+public class UIButton : Singleton<UIButton>
 {
     [SerializeField] private Button clickImage;
+    public bool isPie = false;
+
+    UnityAction onClick;
 
     private void Awake()
     {
@@ -16,24 +20,19 @@ public class UIButton : MonoBehaviour
 
     public void MenuButtonClick()
     {
-        if(UIManager.instance.curButton != null)
+        if(UIManager.Instance.curButton != null)
         {
-            UIManager.instance.curButton.gameObject.SetActive(false);
+            UIManager.Instance.curButton.gameObject.SetActive(false);
         }
-        UIManager.instance.curButton = clickImage;
+        UIManager.Instance.curButton = clickImage;
         clickImage.gameObject.SetActive(true);
     }
 
     public void FoodButtonClick(Food food)
     {
-        if (Gold.Instance.Minus(food))
+        if (GoldManager.Instance.Minus(food))
         {
             this.gameObject.SetActive(false);
-            switch (food.foodType)
-            {
-                case Food.FOOD_TYPE.ApplePie: Guest.instance.foodList.Add(food); break;
-                case Food.FOOD_TYPE.SpecialSet: Guest.instance.foodList.Add(food); break;
-            }
         }
     }
 
