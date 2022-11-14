@@ -14,5 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ingredientsName: Wheat
   image: {fileID: -783686024, guid: 84375c1ca6ec9764f9b73506e1f07c24, type: 3}
-  Count: 5
+  Count: 0
   ingredientsType: 3

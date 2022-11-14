@@ -3,13 +3,12 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.Events;
+using UnityEditor.Rendering;
 
 public class UIButton : Singleton<UIButton>
 {
     [SerializeField] private Button clickImage;
     public bool isPie = false;
-
-    UnityAction onClick;
 
     private void Awake()
     {
@@ -33,7 +32,7 @@ public class UIButton : Singleton<UIButton>
         if (GoldManager.Instance.Minus(food))
         {
             this.gameObject.SetActive(false);
+            MenuList.Instance.menuList.Add(food);
         }
     }
-
 }

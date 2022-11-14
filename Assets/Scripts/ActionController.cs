@@ -23,16 +23,30 @@ public class ActionController : MonoBehaviour
                     {
                         if(hitInfo.transform.GetComponent<Guest>().guestState == GUEST_STATE.Order)
                         {
-                            playerHand.GetChild(0).gameObject.transform.parent = hitInfo.transform.GetComponent<Guest>().foodPos.transform;
-                            hitInfo.transform.GetComponent<Guest>().ChangeState(GUEST_STATE.Eat);
-                            isHold = false;
+                            if(hitInfo.transform.GetComponent<Guest>().foodImage.sprite == playerHand.GetChild(0).GetComponent<FoodPickUp>().food.foodImage)
+                            {
+                                playerHand.GetChild(0).gameObject.transform.parent = hitInfo.transform.GetComponent<Guest>().foodPos.transform;
+                                hitInfo.transform.GetComponent<Guest>().ChangeState(GUEST_STATE.Eat);
+                                isHold = false;
+                            }
+                            else
+                            {
+                                return;
+                            }
                         }
 
                         if(hitInfo.transform.GetComponent<Guest>().guestState == GUEST_STATE.DrinkOrder)
                         {
-                            playerHand.GetChild(0).gameObject.transform.parent = hitInfo.transform.GetComponent<Guest>().foodPos.transform;
-                            hitInfo.transform.GetComponent<Guest>().ChangeState(GUEST_STATE.DrinkEat);
-                            isHold = false;
+                            if (hitInfo.transform.GetComponent<Guest>().foodImage.sprite == playerHand.GetChild(0).GetComponent<FoodPickUp>().food.foodImage)
+                            {
+                                playerHand.GetChild(0).gameObject.transform.parent = hitInfo.transform.GetComponent<Guest>().foodPos.transform;
+                                hitInfo.transform.GetComponent<Guest>().ChangeState(GUEST_STATE.DrinkEat);
+                                isHold = false;
+                            }
+                            else
+                            {
+                                return;
+                            }
                         }
                     }
                 }

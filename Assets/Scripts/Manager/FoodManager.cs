@@ -108,16 +108,7 @@ public class FoodManager : Singleton<FoodManager>
     }
     public void Drink(Food food)
     {
-        StartCoroutine(DrinkCo(food));
-    }
-
-    IEnumerator DrinkCo(Food food)
-    {
-        yield return new WaitForSeconds(3f);
-        switch (food.foodType)
-        {
-            case Food.FOOD_TYPE.Beer: FoodType(beer, 1); break;
-        }
+        StartCoroutine(CookintCo(food));
     }
 
     //주문한 요리가 랜덤한 위치에 생성이 됨

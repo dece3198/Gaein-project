@@ -171,7 +171,7 @@ public class ReturnState : BaseState<Guest>
         guest.transform.parent = guest.parent;
         guest.animator.Play("Walk");
         FoodManager.Instance.EnterPool(guest.foodPos.transform.GetChild(0).GetComponent<FoodPickUp>().food.foodType, guest.foodPos.transform.GetChild(0).gameObject);
-        guest.nav.SetDestination(guest.returnPos.position);
+        guest.nav.SetDestination(guest.parent.position);
     }
 
     public override void Exit(Guest guest)
@@ -195,11 +195,8 @@ public class Guest : MonoBehaviour
 
     [SerializeField] private Transform _parent;
     public Transform parent => _parent;
-    [SerializeField] private Transform _returnPos;
-    public Transform returnPos => _returnPos;
     public GameObject foodPos;
 
-    public List<Food> menuList = new List<Food>();
     public List<Food> foodList = new List<Food>();
     public List<Food> alcoholList = new List<Food>();
 
@@ -217,6 +214,9 @@ public class Guest : MonoBehaviour
 
     private void Awake()
     {
+        foreach (var current in MenuList.Instance.menuList)
+            foodList.Add(current);
+
         _nav = GetComponent<NavMeshAgent>();
         _animator = GetComponent<Animator>();
         _canvas.gameObject.SetActive(false);
@@ -232,6 +232,15 @@ public class Guest : MonoBehaviour
         stateMachine.AddState(GUEST_STATE.DrinkOrder, new DrinkOrderState());
         stateMachine.AddState(GUEST_STATE.DrinkEat, new DrinkEatState());
         stateMachine.AddState(GUEST_STATE.Return, new ReturnState());
+
+        if(_startPos == null)
+        {
+            _startPos = FindObjectOfType<TEST>().transform;
+        }
+        if(_parent == null)
+        {
+            _parent = FindObjectOfType<GuestPool>().transform;
+        }
     }
 
     private void OnEnable()

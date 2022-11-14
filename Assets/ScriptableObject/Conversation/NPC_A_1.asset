@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: NPC_A_1
   m_EditorClassIdentifier: 
   _talks:
-  - talkerName: "\uC0DD\uC120 \uC0C1\uC778"
-    content: 
-    portrait: {fileID: 0}
+  - talkerName: Merchant
+    content: fuck you
+    portrait: {fileID: 1927624599, guid: 7d7add0007ea8844e8047ffffe888a18, type: 3}
   _nextConversation: {fileID: 0}

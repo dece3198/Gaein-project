@@ -14,5 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ingredientsName: Salt
   image: {fileID: -1312034463, guid: 35844f413a8d61b4982c9b04b10223b6, type: 3}
-  Count: 4.8
+  Count: 5
   ingredientsType: 1

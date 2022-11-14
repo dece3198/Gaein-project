@@ -2,12 +2,15 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class UIManager : Singleton<UIManager>
 {
     public static bool inventoryActivated = false;
     [SerializeField] private GameObject mainUI;
+    [SerializeField] private TextMeshProUGUI starText;
     public Button curButton;
+    public int starValue = 1;
 
     private void Awake()
     {
@@ -29,6 +32,8 @@ public class UIManager : Singleton<UIManager>
             }
 
         }
+
+        starText.text = starValue.ToString();
 
         if (mainUI.activeSelf)
         {

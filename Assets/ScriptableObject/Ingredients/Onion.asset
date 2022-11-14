@@ -14,5 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ingredientsName: Onion
   image: {fileID: 497174769, guid: f541bbf00d9f92a459265cbbfae3448e, type: 3}
-  Count: 4.8
+  Count: 5
   ingredientsType: 7
