@@ -62,10 +62,13 @@ public class ActionController : MonoBehaviour
             }
             if(hitInfo.transform.GetComponent<NPC>() != null)
             {
-                if (Input.GetKeyDown(KeyCode.G))
+                if(ConversationController.Instance.isShopOn)
                 {
-                    hitInfo.transform.GetComponent<NPC>().conversationController.canvas.gameObject.SetActive(true);
-                    hitInfo.transform.GetComponent<NPC>().Interaction();
+                    if (Input.GetKeyDown(KeyCode.G))
+                    {
+                        hitInfo.transform.GetComponent<NPC>().conversationController.canvas.gameObject.SetActive(true);
+                        hitInfo.transform.GetComponent<NPC>().Interaction();
+                    }
                 }
             }
         }

@@ -20,12 +20,14 @@ public struct ConversationStruct
     }
 }
 
-public class ConversationController : MonoBehaviour
+public class ConversationController : Singleton<ConversationController>
 {
     [SerializeField] private Button yesBut;
     [SerializeField] private Button noBut;
     [SerializeField] private Canvas butcherShop;
     [SerializeField] private SpriteRenderer playerRenderer;
+    [SerializeField] private int currentIndex = 0;
+    public bool isShopOn = true;
 
     public Canvas canvas;
     public ConversationStruct playerConversationStruct;
@@ -35,7 +37,6 @@ public class ConversationController : MonoBehaviour
     public Dictionary<STORE_TYPE, Canvas> shopDic = new Dictionary<STORE_TYPE, Canvas>();
     Animator animator;
     Talk[] talks;
-    [SerializeField] private int currentIndex = 0;
     private void Awake()
     {
         talkDic.Add(Conversation_TYPE.Player, playerConversationStruct);
@@ -64,7 +65,7 @@ public class ConversationController : MonoBehaviour
                 talks = conversation.nextConversation.talks;
             }
 
-            if(conversation.npcType == NPC_TYPE.Store)
+            if (conversation.npcType == NPC_TYPE.Store)
             {
                 Cursor.lockState = CursorLockMode.None;
                 yesBut.gameObject.SetActive(true);
@@ -103,17 +104,36 @@ public class ConversationController : MonoBehaviour
         }
     }
 
+    private void Update()
+    {
+        /*
+        if(yesBut.gameObject.activeSelf)
+        {
+            if(Input.GetKeyDown(KeyCode.G))
+            {
+                NoClick();
+            }
+        }
+        */
+    }
+
     public void YesClick(Conversation conversation)
     {
+        isShopOn = false;
         canvas.gameObject.SetActive(false);
         shopDic[conversation.storeType].gameObject.SetActive(true);
         yesBut.gameObject.SetActive(false);
+        currentIndex = 0;
     }
 
     public void NoClick()
     {
+        isShopOn = true;
+        currentIndex = 0;
         canvas.gameObject.SetActive(false);
         yesBut.gameObject.SetActive(false);
         noBut.gameObject.SetActive(false);
+        butcherShop.gameObject.SetActive(false);
+        Cursor.lockState = CursorLockMode.Locked;
     }
 }
