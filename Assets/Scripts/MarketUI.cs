@@ -1,87 +1,70 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Xml.Linq;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class MarketUI : MonoBehaviour
 {
-    Animator animator;
     [SerializeField] private Image conversationImageA;
-    [SerializeField] private Image conversationImageB;
     [SerializeField] private Image charactorImageA;
+    [SerializeField] private Image nameA;
+    [SerializeField] private Image conversationImageB;
     [SerializeField] private Image charactorImageB;
-
-    private void Awake()
-    {
-        animator = GetComponent<Animator>();
-    }
-
+    [SerializeField] private Image nameB;
     public void conversationAON()
     {
         conversationImageA.gameObject.SetActive(true);
-        Color colorA = conversationImageA.color;
-        colorA.a = 255;
-        conversationImageA.color = colorA;
-        Color colorB = charactorImageA.color;
-        colorB.a = 255;
-        charactorImageA.color = colorB;
+        nameA.gameObject.SetActive(true);
         conversationBOFF();
+        ColorPull(conversationImageA, charactorImageA, nameA);
     }
 
     public void conversationAOFF()
     {
         conversationImageA.gameObject.SetActive(false);
-        Color colorA = conversationImageA.color;
-        colorA.a = 1;
-        conversationImageA.color = colorA;
-        Color colorB = charactorImageA.color;
-        colorB.a = 1;
-        charactorImageA.color = colorB;
+        nameA.gameObject.SetActive(false);
+        ColorHalf(conversationImageA, charactorImageA, nameA);
     }
 
     public void conversationBON()
     {
         conversationImageB.gameObject.SetActive(true);
-        Color colorA = conversationImageB.color;
-        colorA.a = 255;
-        conversationImageB.color = colorA;
-        Color colorB = charactorImageB.color;
-        colorB.a = 255;
-        charactorImageB.color = colorB;
+        nameB.gameObject.SetActive(true);
         conversationAOFF();
+        ColorPull(conversationImageB, charactorImageB, nameB);
     }
 
     public void conversationBOFF()
     {
         conversationImageB.gameObject.SetActive(false);
-        Color colorA = conversationImageB.color;
-        colorA.a = 1;
-        conversationImageB.color = colorA;
-        Color colorB = charactorImageB.color;
-        colorB.a = 1;
-        charactorImageB.color = colorB;
+        nameB.gameObject.SetActive(false);
+        ColorHalf(conversationImageB, charactorImageB, nameB);
     }
 
-    // Update is called once per frame
-    void Update()
+    private void ColorPull(Image imageA, Image imageB, Image imageC)
     {
-        if(Input.GetKeyDown(KeyCode.A))
-        {
-            animator.Play("UI_A");
-        }
-
-        if (Input.GetKeyDown(KeyCode.S))
-        {
-            animator.Play("UI_A_1");
-
-        }
-        if (Input.GetKeyDown(KeyCode.D))
-        {
-            animator.Play("UI_B");
-        }
-        if (Input.GetKeyDown(KeyCode.F))
-        {
-            animator.Play("UI_B_1");
-        }
+        Color colorA = imageA.color;
+        colorA.a = 1f;
+        imageA.color = colorA;
+        Color colorB = imageB.color;
+        colorB.a = 1f;
+        imageB.color = colorB;
+        Color colorC = imageC.color;
+        colorC.a = 1f;
+        imageC.color = colorC;
     }
+    private void ColorHalf(Image imageA, Image imageB, Image imageC)
+    {
+        Color colorA = imageA.color;
+        colorA.a = 0.5f;
+        imageA.color = colorA;
+        Color colorB = imageB.color;
+        colorB.a = 0.5f;
+        imageB.color = colorB;
+        Color colorC = imageC.color;
+        colorC.a = 0.5f;
+        imageC.color = colorC;
+    }
+
 }

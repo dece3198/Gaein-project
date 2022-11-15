@@ -13,7 +13,14 @@ MonoBehaviour:
   m_Name: NPC_A_1
   m_EditorClassIdentifier: 
   _talks:
-  - talkerName: Merchant
-    content: fuck you
-    portrait: {fileID: 1927624599, guid: 7d7add0007ea8844e8047ffffe888a18, type: 3}
+  - talkerName: "\uC815\uC721\uC810 \uC0AC\uC7A5\uB2D8"
+    content: "\uB458\uB7EC \uBCFC\uD150\uAC00?"
+    portrait: {fileID: 225480118, guid: 2f67e06ea84630f42bb9508dab55f64f, type: 3}
+    type: 0
+  - talkerName: "\uB098"
+    content: "\uD760... \uADF8\uB7F4\uAE4C\uC694?"
+    portrait: {fileID: 256082308, guid: 24efd0b4215afbd41b795e18f2a4c681, type: 3}
+    type: 1
   _nextConversation: {fileID: 0}
+  npcType: 0
+  storeType: 0

@@ -8,7 +8,6 @@ public class ActionController : MonoBehaviour
     [SerializeField] Transform playerHand;
     RaycastHit hitInfo;
     Vector3 handPos = new Vector3(0, 0, 0);
-
     bool isHold = false;
     private void Interaction()
     {
@@ -51,7 +50,6 @@ public class ActionController : MonoBehaviour
                     }
                 }
             }
-
             if(hitInfo.transform.GetComponent<FoodPickUp>() != null)
             {
                 Debug.Log("음식 발견");
@@ -60,6 +58,14 @@ public class ActionController : MonoBehaviour
                     hitInfo.transform.GetComponent<FoodPickUp>().gameObject.transform.parent = playerHand;
                     playerHand.GetChild(0).gameObject.transform.localPosition = handPos;
                     isHold = true;
+                }
+            }
+            if(hitInfo.transform.GetComponent<NPC>() != null)
+            {
+                if (Input.GetKeyDown(KeyCode.G))
+                {
+                    hitInfo.transform.GetComponent<NPC>().conversationController.canvas.gameObject.SetActive(true);
+                    hitInfo.transform.GetComponent<NPC>().Interaction();
                 }
             }
         }
