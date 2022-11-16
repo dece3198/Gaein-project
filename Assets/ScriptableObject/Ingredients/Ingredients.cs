@@ -9,11 +9,15 @@ public class Ingredients : ScriptableObject
     public string ingredientsName;
     public Sprite image;
     public float Count;
+    public int price;
+
+    public GOLD_TYPE goldType;
 
     public enum Ingredients_TYPE
     {
-        Sugar,Salt,Meat,Wheat,Apple,Blueberries,Corn,Onion,Carrot,Egg
+        Sugar, Salt, Meat, Wheat, Apple, Blueberries, Corn, Onion, Carrot, Egg
     }
+
 
     public Ingredients_TYPE ingredientsType;
 

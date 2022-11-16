@@ -4,35 +4,10 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.AI;
 
-public class TEST : MonoBehaviour
+public class ChairManager : Singleton<ChairManager>
 {
-    public static TEST Instance;
 
-    [SerializeField] List<Transform> seatPos = new List<Transform>();
-    public int chair = 0;
-    private void Awake()
-    {
-        Instance = this;
-    }
-    public bool ChairCheck()
-    {
-        for (int i = 0; i < seatPos.Count; i++)
-        {
-            if (seatPos[i].GetComponent<Chair>().guest != null)
-            {
-                chair++;
-            }
-        }
-        if(GuestPool.Instance.guestIndex <= chair)
-        {
-            return false;
-        }
-        else
-        {
-            return true;
-        }
-    }
-
+    public List<Transform> seatPos = new List<Transform>();
 
     private void OnTriggerEnter(Collider other)
     {

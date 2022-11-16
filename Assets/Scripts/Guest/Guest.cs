@@ -235,7 +235,7 @@ public class Guest : MonoBehaviour
 
         if(_startPos == null)
         {
-            _startPos = FindObjectOfType<TEST>().transform;
+            _startPos = FindObjectOfType<ChairManager>().transform;
         }
         if(_parent == null)
         {

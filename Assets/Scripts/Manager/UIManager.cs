@@ -9,6 +9,7 @@ public class UIManager : Singleton<UIManager>
     public static bool inventoryActivated = false;
     [SerializeField] private GameObject mainUI;
     [SerializeField] private TextMeshProUGUI starText;
+    [SerializeField] private Button Button;
     public Button curButton;
     public int starValue = 1;
 
@@ -41,6 +42,22 @@ public class UIManager : Singleton<UIManager>
         }
         else
         {
+            if(Button != null)
+            {
+                if(Button.gameObject.activeSelf)
+                {
+                    Cursor.lockState = CursorLockMode.None;
+                    return;
+                }
+            }
+            if(ConversationController.Instance.butcherShop != null)
+            {
+                if (ConversationController.Instance.butcherShop.gameObject.activeSelf)
+                {
+                    Cursor.lockState = CursorLockMode.None;
+                    return;
+                }
+            }
             Cursor.lockState = CursorLockMode.Locked;
         }
     }

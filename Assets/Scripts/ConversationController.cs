@@ -24,11 +24,13 @@ public class ConversationController : Singleton<ConversationController>
 {
     [SerializeField] private Button yesBut;
     [SerializeField] private Button noBut;
-    [SerializeField] private Canvas butcherShop;
     [SerializeField] private SpriteRenderer playerRenderer;
     [SerializeField] private int currentIndex = 0;
+    [SerializeField] private PlayerCamera PlayerCamera;
     public bool isShopOn = true;
 
+    public Canvas menuCanvas;
+    public Canvas butcherShop;
     public Canvas canvas;
     public ConversationStruct playerConversationStruct;
     public ConversationStruct npcConversationStruct;
@@ -43,7 +45,10 @@ public class ConversationController : Singleton<ConversationController>
         talkDic.Add(Conversation_TYPE.NPC, npcConversationStruct);
         shopDic.Add(STORE_TYPE.ButcherShop, butcherShop);
         animator = canvas.GetComponent<Animator>();
-        butcherShop.gameObject.SetActive(false);
+        if(butcherShop != null)
+        {
+            butcherShop.gameObject.SetActive(false);
+        }
         canvas.gameObject.SetActive(false);
         yesBut.gameObject.SetActive(false);
         noBut.gameObject.SetActive(false);
@@ -104,23 +109,13 @@ public class ConversationController : Singleton<ConversationController>
         }
     }
 
-    private void Update()
-    {
-        /*
-        if(yesBut.gameObject.activeSelf)
-        {
-            if(Input.GetKeyDown(KeyCode.G))
-            {
-                NoClick();
-            }
-        }
-        */
-    }
-
     public void YesClick(Conversation conversation)
     {
+        Cursor.lockState = CursorLockMode.None;
+        PlayerCamera.enabled = false;
         isShopOn = false;
         canvas.gameObject.SetActive(false);
+        menuCanvas.gameObject.SetActive(true);
         shopDic[conversation.storeType].gameObject.SetActive(true);
         yesBut.gameObject.SetActive(false);
         currentIndex = 0;
@@ -128,8 +123,10 @@ public class ConversationController : Singleton<ConversationController>
 
     public void NoClick()
     {
+        PlayerCamera.enabled = true;
         isShopOn = true;
         currentIndex = 0;
+        menuCanvas.gameObject.SetActive(false);
         canvas.gameObject.SetActive(false);
         yesBut.gameObject.SetActive(false);
         noBut.gameObject.SetActive(false);

@@ -4,6 +4,8 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.Events;
 using UnityEditor.Rendering;
+using Unity.VisualScripting;
+using System;
 
 public class UIButton : Singleton<UIButton>
 {
@@ -27,12 +29,26 @@ public class UIButton : Singleton<UIButton>
         clickImage.gameObject.SetActive(true);
     }
 
-    public void FoodButtonClick(Food food)
+    public void FoodButtonClick(ScriptableObject scriptable)
     {
-        if (GoldManager.Instance.Minus(food))
+        switch (scriptable)
         {
-            this.gameObject.SetActive(false);
-            MenuList.Instance.menuList.Add(food);
+            case Food:
+                Food food = scriptable as Food;
+                if(GoldManager.Instance.Minus(food))
+                {
+                    MenuList.Instance.menuList.Add(food);
+                    this.gameObject.SetActive(false);
+                }
+                break;
+            case Ingredients:
+                Ingredients ingredients = scriptable as Ingredients;
+                if (GoldManager.Instance.Minus(ingredients))
+                {
+                    ingredients.Count += 1;
+                }
+                break;
         }
+
     }
 }

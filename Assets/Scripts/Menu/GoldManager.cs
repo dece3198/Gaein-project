@@ -2,6 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using Unity.VisualScripting;
+using System;
 
 public class GoldManager : Singleton<GoldManager>
 {
@@ -13,116 +15,105 @@ public class GoldManager : Singleton<GoldManager>
     public int bronze;
 
 
+    public int Bronze
+    { 
+        get 
+        {
+            if(bronze < 1000) return bronze;
+            else return bronze % 1000;
+        }
+        set 
+        {
+            bronze = value;
+            if (bronze / 1000 >= 1)
+            {
+                Silver += bronze / 1000;
+            }
+        }
+    }
+    public int Silver
+    {
+        get 
+        {
+            if (silver >= 1000) return silver % 1000;
+            else return silver;
+        }
+        set
+        {
+            silver = value;
+            if (silver >= 1000)
+            {
+                Gold += silver / 1000;
+            }
+        }
+    }
+    public int Gold
+    {
+        get { return gold; }
+        set
+        {
+            gold = value;
+        }
+    }
+
     private void Awake()
     {
-        bronze = 100;
+        Bronze = 500;
     }
 
     private void Update()
     {
-        goldText.text = gold.ToString();
-        silverText.text = silver.ToString();
-        bronzeText.text = bronze.ToString();
-        GoldUpdate();
+        goldText.text = Gold.ToString();
+        silverText.text = Silver.ToString();
+        bronzeText.text = Bronze.ToString();
     }
 
-    private void GoldUpdate()
+    public bool Minus(ScriptableObject scriptable)
     {
-        if(silver > 999)
+        switch (scriptable)
         {
-            gold += 1;
-            silver -= 1000;
+            case Food:
+                Food food = scriptable as Food;
+                if (Bronze - food.price <  0)
+                {
+                    if (Silver > (food.price / 1000 ))
+                    {
+                        Silver -= (food.price / 1000) + 1;
+                        Bronze += (1000 - (food.price % 1000));
+                        return true;
+                    }
+                    else
+                    {
+                        return false;
+                    }
+                }
+                else
+                {
+                    Bronze -= food.price;
+                    return true;
+                }
+            case Ingredients:
+                Ingredients ingredients = scriptable as Ingredients;
+                if (Bronze - ingredients.price < 0)
+                {
+                    if (Silver > (ingredients.price / 1000))
+                    {
+                        Silver -= (ingredients.price / 1000) + 1;
+                        Bronze += (1000 - (ingredients.price % 1000));
+                        return true;
+                    }
+                    else
+                    {
+                        return false;
+                    }
+                }
+                else
+                {
+                    Bronze -= ingredients.price;
+                    return true;
+                }
         }
-        if(bronze > 999)
-        {
-            silver += 1;
-            bronze -= 1000;
-        }
-    }
-
-    public void Plus(Food food)
-    {
-        switch (food.goldType)
-        {
-            case Food.GOLD_TYPE.Gold: gold += food.Price; break;
-            case Food.GOLD_TYPE.Silver: silver += food.Price; break;
-            case Food.GOLD_TYPE.Bronze: bronze += food.Price; break;
-        }
-    }
-
-    public bool Minus(Food food)
-    {
-        switch (food.goldType)
-        {
-            case Food.GOLD_TYPE.Gold : return GoldCheck(food);
-            case Food.GOLD_TYPE.Silver: return SilverCheck(food);
-            case Food.GOLD_TYPE.Bronze: return BronzeCheck(food);
-        }  
 
         return false;
     }
-
-    private bool GoldCheck(Food food)
-    {
-        if(gold < food.Price)
-        {
-            return false;
-        }
-        else
-        {
-            gold -= food.Price;
-        }
-
-        return true;
-    }
-
-    public bool SilverCheck(Food food)
-    {
-        if(gold > 0)
-        {
-            if(silver < food.Price)
-            {
-                gold -= 1;
-                silver += 1000 - food.Price;
-                return true;
-            }
-            else
-            {
-                silver -= food.Price;
-                return true;
-            }
-        }
-        else
-        {
-            if(silver >= food.Price)
-            {
-                silver -= food.Price;
-                return true;
-            }
-        }
-        return false;
-    }
-
-    public bool BronzeCheck(Food food)
-    {
-        if (silver > 0)
-        {
-            if (bronze < food.Price)
-            {
-                silver -= 1;
-                bronze += 1000 - food.Price;
-                return true;
-            }
-        }
-        else
-        {
-            if (bronze > food.Price)
-            {
-                bronze -= food.Price;
-                return true;
-            }
-        }
-        return false;
-    }
-
 }

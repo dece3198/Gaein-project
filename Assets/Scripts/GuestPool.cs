@@ -10,9 +10,8 @@ public class GuestPool : Singleton<GuestPool>
     public int guestValue = 0;
     public int guestIndex = 0;
     public int chair = 0;
-    private bool isCoolTime = true;
-
-    IEnumerator guestCool;
+    public bool isCoolTime = true;
+    public IEnumerator guestCool;
 
     private void Start()
     {
@@ -36,6 +35,11 @@ public class GuestPool : Singleton<GuestPool>
             guestIndex = 0;
             guestValue = 0;
         }
+
+        if (guestIndex >= ChairManager.Instance.seatPos.Count)
+        {
+            StopCoroutine(guestCool);
+        }
     }
 
     public IEnumerator GuestCO()
@@ -44,25 +48,25 @@ public class GuestPool : Singleton<GuestPool>
         {
             for (int i = 0; i < (UIManager.Instance.starValue * 15); i++)
             {
-                if (TEST.Instance.ChairCheck())
+                isCoolTime = false;
+                guestList[0].transform.localPosition = pos;
+                guestList[0].SetActive(true);
+                guestList[0].transform.parent = null;
+                guestList.Remove(guestList[0]);
+                guestValue++;
+                guestIndex++;
+                yield return new WaitForSeconds(8f);
+                if (guestList.Count <= 1)
                 {
-                    isCoolTime = false;
-                    guestList[0].transform.localPosition = pos;
-                    guestList[0].SetActive(true);
-                    guestList[0].transform.parent = null;
-                    guestList.Remove(guestList[0]);
-                    guestIndex++;
-                    guestValue++;
-                    TEST.Instance.chair = 0;
-                    yield return new WaitForSeconds(8f);
-                    if (guestList.Count <= 1)
-                    {
-                        Refill();
-                    }
+                    Refill();
                 }
             }
         }
-        
+    }
+
+    public void StartCO()
+    {
+        StartCoroutine(guestCool);
     }
 
     public void OpenClick()

@@ -19,6 +19,9 @@ public class Chair : MonoBehaviour
             {
                 isSit = true;
                 guest = null;
+                GuestPool.Instance.isCoolTime = true;
+                GuestPool.Instance.StartCO();
+                GuestPool.Instance.guestIndex--;
             }
         }
     }

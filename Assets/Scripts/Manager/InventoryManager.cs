@@ -14,7 +14,7 @@ public class InventoryManager : MonoBehaviour
     {
         for(int i = 0; i < Count.Count; i++)
         {
-            Count[i].text = Ingredients[i].Count.ToString();
+            Count[i].text = Ingredients[i].Count.ToString("F1");
         }
     }
 }
