@@ -10,6 +10,15 @@ public class PlayerState : MonoBehaviour
         animator = GetComponent<Animator>();
     }
 
+    public void TimeScA()
+    {
+        Time.timeScale = 0.5f;
+    }
+    public void TimeScB()
+    {
+        Time.timeScale = 1f;
+    }
+
     private void Update()
     {
         if(Input.GetKeyDown(KeyCode.Space))
