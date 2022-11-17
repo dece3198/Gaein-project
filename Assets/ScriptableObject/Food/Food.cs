@@ -15,6 +15,7 @@ public class Food : ScriptableObject
     public GameObject prefab;
     public int price;
     public List<Ingredients> recipe = new List<Ingredients>();
+    public bool isScenes;
 
     public enum TYPE
     {

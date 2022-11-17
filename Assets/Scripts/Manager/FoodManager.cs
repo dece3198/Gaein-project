@@ -16,20 +16,15 @@ public class FoodManager : Singleton<FoodManager>
     Dictionary<FOOD_TYPE, float> foodTime = new Dictionary<FOOD_TYPE, float>();
     private int foodNumber = 0;
 
-    private void Awake()
+    public new void Awake()
     {
+        base.Awake();
         poolDic.Add(Food.FOOD_TYPE.Stew, stews);
         poolDic.Add(Food.FOOD_TYPE.ApplePie, applePie);
         poolDic.Add(Food.FOOD_TYPE.Beer, beer);
         foodTime.Add(FOOD_TYPE.Stew, 15f);
         foodTime.Add(FOOD_TYPE.ApplePie, 15f);
         foodTime.Add(FOOD_TYPE.Beer, 5f);
-
-        for(int i = 0; i < ingredients.Count; i++)
-        {
-            ingredients[i].Count = 5;
-        }
-
     }
 
     private void Start()

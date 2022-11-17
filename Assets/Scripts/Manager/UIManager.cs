@@ -13,8 +13,9 @@ public class UIManager : Singleton<UIManager>
     public Button curButton;
     public int starValue = 1;
 
-    private void Awake()
+    public new void Awake()
     {
+        base.Awake();
         mainUI.SetActive(false);
     }
 
@@ -30,6 +31,7 @@ public class UIManager : Singleton<UIManager>
             else
             {
                 mainUI.SetActive(false);
+                Cursor.lockState = CursorLockMode.Locked;
             }
 
         }
@@ -58,7 +60,7 @@ public class UIManager : Singleton<UIManager>
                     return;
                 }
             }
-            Cursor.lockState = CursorLockMode.Locked;
+            
         }
     }
 

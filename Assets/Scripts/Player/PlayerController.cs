@@ -3,15 +3,16 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [RequireComponent(typeof(CharacterController))]
-public class PlayerController : MonoBehaviour
+public class PlayerController : Singleton<PlayerController>
 {
     [SerializeField] private float moveSpeed;
     private CharacterController controller;
     private Vector3 moveVec;
     private float moveY;
 
-    private void Awake()
+    private new void Awake()
     {
+        base.Awake();
         controller = GetComponent<CharacterController>();
     }
 
