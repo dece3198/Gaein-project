@@ -2,6 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+public enum PLAYER_STATE
+{
+
+
+}
+
+
 public class PlayerState : MonoBehaviour
 {
     Animator animator;

@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18028334, g: 0.22571328, b: 0.3069217, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -850,6 +850,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1332461516051121786, guid: d45fca812854c0044b3ebe5218a96e5c, type: 3}
+      propertyPath: _slider
+      value: 
+      objectReference: {fileID: 1495591700}
     - target: {fileID: 6514852442529610295, guid: d45fca812854c0044b3ebe5218a96e5c, type: 3}
       propertyPath: m_Name
       value: Thief
@@ -900,6 +904,29 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d45fca812854c0044b3ebe5218a96e5c, type: 3}
+--- !u!1 &4888020061610408177 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6514852442529610295, guid: d45fca812854c0044b3ebe5218a96e5c, type: 3}
+  m_PrefabInstance: {fileID: 4888020061610408176}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &4888020061610408178
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4888020061610408177}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 40fb4faaaaedf1e4d95e7fbda1af2c5c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  range: 59
+  size: 10
+  layerMask:
+    serializedVersion: 2
+    m_Bits: 2048
+  target: {fileID: 0}
 --- !u!1001 &6068389912732783082
 PrefabInstance:
   m_ObjectHideFlags: 0
