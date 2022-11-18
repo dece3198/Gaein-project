@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using TMPro.Examples;
 
 public class UIManager : Singleton<UIManager>
 {
@@ -10,6 +11,7 @@ public class UIManager : Singleton<UIManager>
     [SerializeField] private GameObject mainUI;
     [SerializeField] private TextMeshProUGUI starText;
     [SerializeField] private Button Button;
+    [SerializeField] private PlayerCamera cam;
     public Button curButton;
     public int starValue = 1;
 
@@ -27,9 +29,11 @@ public class UIManager : Singleton<UIManager>
             if (inventoryActivated)
             {
                 mainUI.SetActive(true);
+                cam.enabled = false;
             }
             else
             {
+                cam.enabled = true;
                 mainUI.SetActive(false);
                 Cursor.lockState = CursorLockMode.Locked;
             }

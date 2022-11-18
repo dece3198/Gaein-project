@@ -6,11 +6,14 @@ using UnityEngine.SceneManagement;
 public class Teleport : MonoBehaviour
 {
     [SerializeField] private GameObject telepoUI;
+    [SerializeField] private GameObject RequestUI;
     public PlayerCamera playerCamera;
 
     private void Awake()
     {
         telepoUI.SetActive(false);
+        if(RequestUI != null)
+        RequestUI.SetActive(false);
     }
 
     private void OnTriggerEnter(Collider other)
@@ -44,7 +47,21 @@ public class Teleport : MonoBehaviour
         Cursor.lockState = CursorLockMode.Locked;
         SceneManager.LoadScene("Market");
     }
-
+    public void Request()
+    {
+        telepoUI.SetActive(false);
+        RequestUI.SetActive(true);
+    }
+    public void Battle()
+    {
+        RequestUI.SetActive(false);
+        if (playerCamera != null)
+        {
+            playerCamera.enabled = true;
+        }
+        Cursor.lockState = CursorLockMode.Locked;
+        SceneManager.LoadScene("Battle");
+    }
     public void BackButton()
     {
         telepoUI.SetActive(false);

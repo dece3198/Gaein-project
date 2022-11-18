@@ -5,27 +5,44 @@ using UnityEngine;
 
 public class Eyesight : MonoBehaviour
 {
+    [Header("Range")]
     [SerializeField, Range(0,360f)] private float range;
     [SerializeField] private float size;
+    [SerializeField] private float atkSize;
+
+    [Header("Target")]
+    [SerializeField] private GameObject _target;
+    public GameObject target => _target;
+    [SerializeField] private GameObject _atkTarget;
+    public GameObject atkTarget => _atkTarget;
+
     [SerializeField] private LayerMask layerMask;
-
-    public GameObject target;
-
-    private void FindTatget()
+    public void FindTarget()
     {
         Collider[] targets = Physics.OverlapSphere(transform.position, size, layerMask);
         for(int i = 0; i < targets.Length; i++)
         {
-            Vector3 dirToTarget = (targets[i].transform.position - transform.position).normalized;
+            _target = targets[i].gameObject;
+            return;
+        }
 
-            if(Vector3.Dot(transform.forward, dirToTarget) < Mathf.Cos(range * 0.5f * Mathf.Deg2Rad))
+        _target = null;
+    }
+
+    public void FindAtkTarget()
+    {
+        Collider[] atkTargets = Physics.OverlapSphere(transform.position, atkSize, layerMask);
+        for (int j = 0; j < atkTargets.Length; j++)
+        {
+            Vector3 dirToTarget = (atkTargets[j].transform.position - transform.position).normalized;
+            if (Vector3.Dot(transform.forward, dirToTarget) < Mathf.Cos(range * 0.5f * Mathf.Deg2Rad))
             {
                 continue;
             }
-            target = targets[i].gameObject;
+            _atkTarget = atkTargets[j].gameObject;
             return;
         }
-        target = null;
+        _atkTarget = null;
     }
 
     private Vector3 AngleToDir(float angle)
@@ -38,6 +55,8 @@ public class Eyesight : MonoBehaviour
     {
         Gizmos.color = Color.green;
         Gizmos.DrawWireSphere(transform.position, size);
+        Gizmos.color = Color.red;
+        Gizmos.DrawWireSphere(transform.position, atkSize);
 
         Vector3 lookDir = AngleToDir(transform.eulerAngles.y);
         Vector3 rightDir = AngleToDir(transform.eulerAngles.y + range * 0.5f);

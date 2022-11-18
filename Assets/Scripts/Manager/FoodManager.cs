@@ -92,6 +92,7 @@ public class FoodManager : Singleton<FoodManager>
     //주문을 받으면 15초 뒤에 알맞는 요리타입의 함수가 실행됨
     IEnumerator CookintCo(Food food)
     {
+        GoldManager.Instance.bronze += food.price;
         yield return new WaitForSeconds(foodTime[food.foodType]);
         switch (food.foodType)
         {
