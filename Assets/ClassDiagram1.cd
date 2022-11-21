@@ -1,0 +1,371 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="IdleState" Collapsed="true">
+    <Position X="5.5" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAAAAAAAAAAAAAAAAAAAAEAAAAIAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\Assassin.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AssaWalkState" Collapsed="true">
+    <Position X="10" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAAAAAAAAAAAAAAAAAAAAEAAAAIAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\Assassin.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ReadyState" Collapsed="true">
+    <Position X="14.5" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQBAAAAAAAAAAAAAAAAAAAAAAAEAAAAIAAAAIAAAAA=</HashCode>
+      <FileName>Assets\Scripts\Assassin.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AttackState" Collapsed="true">
+    <Position X="19" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAAAAAAAAAAAAAAAAAAAAEAAAAIAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\Assassin.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DieState" Collapsed="true">
+    <Position X="23.5" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAAAAAAAAAAAAAAAAAAAAEAAAAIAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\Assassin.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Assassin" Collapsed="true">
+    <Position X="34.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>BQQAAAABACgABAAAAAAACAAAQAAAAgABIIAGwAAAAEA=</HashCode>
+      <FileName>Assets\Scripts\Assassin.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="BattleManager" Collapsed="true">
+    <Position X="36.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAACAAAAAAAAAAAAAAAAAAAAABAAAAAAAAAAI=</HashCode>
+      <FileName>Assets\Scripts\BattleManager.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Door">
+    <Position X="6" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>BAQAAAAIAAIBAAAAAAAABAAAAAABAAAAAAAAAEAAAAQ=</HashCode>
+      <FileName>Assets\Scripts\Door\Door.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="OutDoor">
+    <Position X="4.25" Y="8" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAAAABAAAAAAIABAAAAAAAAAAAAAAAAAAAAEA=</HashCode>
+      <FileName>Assets\Scripts\Door\OutDoor.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="FoodPickUp" Collapsed="true">
+    <Position X="36.25" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAI=</HashCode>
+      <FileName>Assets\Scripts\FoodPickUp.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Chair" Collapsed="true">
+    <Position X="38" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAAAIAQAAAAAAAAAAAAAAAAAIAAAAACEEAEAA=</HashCode>
+      <FileName>Assets\Scripts\Guest\Chair.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ChairManager" Collapsed="true">
+    <Position X="18.75" Y="5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAAAgAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\Guest\ChairManager.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Eyesight" Collapsed="true">
+    <Position X="32.75" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAIAAIAAAAAoIAAEAAEQAAAAAAAAAAAAEEAAAA=</HashCode>
+      <FileName>Assets\Scripts\Guest\Eyesight.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Finish" Collapsed="true">
+    <Position X="34.5" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\Guest\Finish.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="BaseState&lt;T&gt;" Collapsed="true">
+    <Position X="17.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAAAAAAAAAAAAAAAAAAAAEAAAAIAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\Guest\Guest.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="WalkState" Collapsed="true">
+    <Position X="7.75" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAAAAAAAAAAAAAAAAAAAAEAAAAIAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\Guest\Guest.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SitState" Collapsed="true">
+    <Position X="12.25" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAAAAAAAAAAAAAAAAAAAAEAAAAIAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\Guest\Guest.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="OrderState" Collapsed="true">
+    <Position X="16.75" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAAAAAAAAAAAAAAAAAAAAEAAAAIAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\Guest\Guest.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="EatState" Collapsed="true">
+    <Position X="21.25" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAIAAAAAAAAAAAAAAAAAAAAQEAAAAIAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\Guest\Guest.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DrinkOrderState" Collapsed="true">
+    <Position X="25.75" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAAAAAAAAAAAAAAAAAAAAEAAAAIAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\Guest\Guest.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DrinkEatState" Collapsed="true">
+    <Position X="28" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAIAAAAAAAAAAAAAAAAAAAAQEAAAAIAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\Guest\Guest.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ReturnState" Collapsed="true">
+    <Position X="30.25" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAAAAAAAAAAAAAAAAAAAAEAAAAIAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\Guest\Guest.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Guest">
+    <Position X="24.25" Y="7" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>BAAAggAEAACABIBAIAAAAAASACQAAARAIAAAAAAAClM=</HashCode>
+      <FileName>Assets\Scripts\Guest\Guest.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Field Name="stateMachine" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="GuestPool" Collapsed="true">
+    <Position X="7.5" Y="5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AEQAAAAMACAACAAAQAhAAJAAAAAAgAAAAAAAAIAAAGA=</HashCode>
+      <FileName>Assets\Scripts\Guest\GuestPool.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="GuestPos" Collapsed="true">
+    <Position X="32.75" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAACAAAAAAAAQAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\Guest\GuestPos.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MenuList" Collapsed="true">
+    <Position X="21" Y="5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\Guest\MenuList.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="StateMachine&lt;T1, T2&gt;">
+    <Position X="28.25" Y="7.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAAAAABAAAAAAAAAAAAABAAAAEAAAAAAAACAg=</HashCode>
+      <FileName>Assets\Scripts\Guest\StateMachine.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="FoodManager" Collapsed="true">
+    <Position X="25.5" Y="5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAEIACgAAAAAYAgAAAAEQAIAAAYAAAACAIAAAEE=</HashCode>
+      <FileName>Assets\Scripts\Manager\FoodManager.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="GameManager" Collapsed="true">
+    <Position X="38" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAACAAAAAAAAAAAAAAAAAAAAABAAAAAAAAAAI=</HashCode>
+      <FileName>Assets\Scripts\Manager\GameManager.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="InventoryManager" Collapsed="true">
+    <Position X="34.5" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAAAAAAAAAAAAAACQAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\Manager\InventoryManager.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SeatManager" Collapsed="true">
+    <Position X="36.25" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\Manager\SeatManager.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="StoreManager" Collapsed="true">
+    <Position X="12" Y="5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEA=</HashCode>
+      <FileName>Assets\Scripts\Manager\StoreManager.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="UIManager" Collapsed="true">
+    <Position X="14.25" Y="5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AEQABAgAAEAAAAAAAAACQAAAAAAgAAAAAAAAAAAAAEA=</HashCode>
+      <FileName>Assets\Scripts\Manager\UIManager.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MenuUI" Collapsed="true">
+    <Position X="23.25" Y="5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEA=</HashCode>
+      <FileName>Assets\Scripts\MenuUI.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MenuUIManager" Collapsed="true">
+    <Position X="36.25" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AIAAAIAAACAAAAAAAAAAAIAAAAIAAAAAAAAAAAAAAgA=</HashCode>
+      <FileName>Assets\Scripts\MenuUIManager.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ActionController" Collapsed="true">
+    <Position X="32.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAIAIAAAAAAAAAAAAAAAAAAAAAAAJAAQAEAAAAA=</HashCode>
+      <FileName>Assets\Scripts\Player\ActionController.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="PlayerCamera" Collapsed="true">
+    <Position X="39.75" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQQAAAAAGAABAAEAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\Player\PlayerCamera.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="PlayerController" Collapsed="true">
+    <Position X="32.75" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAEIAIAAEAABAABAAAAAAAAAAAAAAAAAAAAEA=</HashCode>
+      <FileName>Assets\Scripts\Player\PlayerController.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ExitPortal" Collapsed="true">
+    <Position X="39.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\Portal\ExitPortal.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Portal" Collapsed="true">
+    <Position X="34.5" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\Portal\Portal.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="StartPoint" Collapsed="true">
+    <Position X="38" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\Portal\StartPoint.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Teleport" Collapsed="true">
+    <Position X="32.75" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAEAAAAAAAAAAAAAABCAQAAAAAgIAAQAAAAGAAAEA=</HashCode>
+      <FileName>Assets\Scripts\Portal\Teleport.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Singleton&lt;T&gt;" Collapsed="true">
+    <Position X="16.5" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAEA=</HashCode>
+      <FileName>Assets\Scripts\Singleton.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ConversationController" Collapsed="true">
+    <Position X="27.75" Y="5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>BEAAAAEAIACAAACAAQAAAOICAAAAAAwAAQAAQAAQAEA=</HashCode>
+      <FileName>Assets\Scripts\UI\ConversationController.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="GoldManager" Collapsed="true">
+    <Position X="5.25" Y="5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQIAQAAAQAAAEAAAABAAAABABAAgAAAAAAAAAAACEE=</HashCode>
+      <FileName>Assets\Scripts\UI\GoldManager.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MarketUI" Collapsed="true">
+    <Position X="9.75" Y="5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAACAgBAAAEACAAEAGAAAABAAAAAAACAAAEA=</HashCode>
+      <FileName>Assets\Scripts\UI\MarketUI.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="NPCUI" Collapsed="true">
+    <Position X="38" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAIAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\UI\NPCUI.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="UIButton" Collapsed="true">
+    <Position X="16.5" Y="5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAQAAAAAAAAAAABAAAAAAAAEAAAAFA=</HashCode>
+      <FileName>Assets\Scripts\UI\UIButton.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Struct Name="ConversationStruct" Collapsed="true">
+    <Position X="32.75" Y="5.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAxAAAAAAAAAAAAAAAAAAAAAAAAAAAACA=</HashCode>
+      <FileName>Assets\Scripts\UI\ConversationController.cs</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Interface Name="IGuestState" Collapsed="true">
+    <Position X="32.75" Y="7" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAAAAAAAAAAAAAAAAAAAAEAAAAIAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\Guest\IGuestState.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Enum Name="ASSASSIN_STATE" Collapsed="true">
+    <Position X="32.75" Y="8" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAABAAAAAAAEgAAAAAAAAAIAAIAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\Assassin.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="GUEST_STATE" Collapsed="true">
+    <Position X="34.5" Y="8" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAUAAAAAEAAAAAAAAAAEAAAAAAAAIAAAgAAAEAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\Guest\Guest.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Font Name="맑은 고딕" Size="9" />
+</ClassDiagram>

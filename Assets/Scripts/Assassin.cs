@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public enum ASSASSIN_STATE
 { 
@@ -72,6 +73,8 @@ public class ReadyState : BaseState<Assassin>
         Time.timeScale = 0.1f;
         assassin.isAttack = true;
         assassin.slider.gameObject.SetActive(true);
+        assassin.timeSlider.gameObject.SetActive(true);
+        assassin.timeSlider.value = assassin.timeSlider.maxValue;
     }
 
     public override void Update(Assassin assassin)
@@ -85,21 +88,23 @@ public class ReadyState : BaseState<Assassin>
         }
         
         assassin.slider.value = spaceIndex;
-        time += 10 * Time.deltaTime;
-        if(time >= 5)
+        time += Time.deltaTime * 0.1f;
+        assassin.timeSlider.value -= time;
+
+        if(assassin.timeSlider.value <= 0)
         {
-            assassin.ChangeState(ASSASSIN_STATE.Attack);
+            SceneManager.LoadScene("Game");
         }
         if (spaceIndex >= 15)
         {
             assassin.player.ChangeState(PLAYER_STATE.Avoid);
+            assassin.ChangeState(ASSASSIN_STATE.Attack);
         }
     }
 
     public override void Exit(Assassin assassin)
     {
         assassin.isAttack = false;
-        spaceIndex = 0;
         assassin.slider.value = 0;
         time = 0;
         assassin.slider.gameObject.SetActive(false);
@@ -161,6 +166,9 @@ public class Assassin : MonoBehaviour
     [SerializeField] private Slider _slider;
     public Slider slider => _slider;
 
+    [SerializeField] private Slider _timeSlider;
+    public Slider timeSlider => _timeSlider;
+
     public StateMachine<ASSASSIN_STATE, Assassin> assassinmachine = new StateMachine<ASSASSIN_STATE, Assassin>();
 
 
@@ -172,6 +180,7 @@ public class Assassin : MonoBehaviour
         _navMeshAgent = GetComponent<NavMeshAgent>();
         _eyesight = GetComponent<Eyesight>();
         _slider.gameObject.SetActive(false);
+        timeSlider.gameObject.SetActive(false);
         assassinmachine.Reset(this);
         assassinmachine.AddState(ASSASSIN_STATE.Idle, new IdleState());
         assassinmachine.AddState(ASSASSIN_STATE.Walk, new AssaWalkState());

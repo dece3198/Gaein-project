@@ -103,6 +103,7 @@ public class PlayerReadyState : BaseState<PlayerState>
         if (success >= 8)
         {
             playerState.ChangeState(PLAYER_STATE.Attack);
+            
         }
     }
 
@@ -141,6 +142,7 @@ public class PlayerAtkState : BaseState<PlayerState>
     {
         yield return new WaitForSeconds(5f);
         SceneManager.LoadScene("Game");
+        GoldManager.Instance.bronze += 50000;
     }
 }
 
@@ -161,7 +163,7 @@ public class PlayerDieState : BaseState<PlayerState>
 
 
 
-public class PlayerState : MonoBehaviour
+public class PlayerState : Singleton<PlayerState>
 {
     [SerializeField] private Assassin _assassin;
     public Assassin assassin => _assassin;
@@ -175,8 +177,9 @@ public class PlayerState : MonoBehaviour
     public Camera serveCam;
 
     public Dictionary<KeyCode, string> keyTextDic = new Dictionary<KeyCode, string>();
-    private void Awake()
+    private new void Awake()
     {
+        base.Awake();
         keyUI.gameObject.SetActive(false);
         serveCam.gameObject.SetActive(false);
         _animator = GetComponent<Animator>();

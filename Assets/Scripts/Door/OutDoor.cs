@@ -6,6 +6,11 @@ public class OutDoor : Door
 {
     [SerializeField] private bool isOutDoor = false;
 
+    private void Awake()
+    {
+        GKeyImage.gameObject.SetActive(false);
+    }
+
     public override void Update()
     {
         OpenDoor();
@@ -25,10 +30,12 @@ public class OutDoor : Door
 
         if (target.Length <= 0)
         {
+            GKeyImage.gameObject.SetActive(false);
             return;
         }
         else if (target.Length > 0)
         {
+            GKeyImage.gameObject.SetActive(true);
             for (int i = 0; i < target.Length; i++)
             {
                 Guest guest = target[i].GetComponent<Guest>();
@@ -40,8 +47,7 @@ public class OutDoor : Door
                     StartCoroutine(DoorCo());
                 }
                 if (playerControllerB != null)
-                {
-                    GKeyImage.gameObject.SetActive(true);
+                { 
                     isOutDoor = true;
                 }
             }

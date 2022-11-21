@@ -34,6 +34,7 @@ public class GuestPool : Singleton<GuestPool>
             StopCoroutine(guestCool);
             guestIndex = 0;
             guestValue = 0;
+            isCoolTime = true;
         }
 
         if (guestIndex >= ChairManager.Instance.seatPos.Count)
@@ -44,22 +45,18 @@ public class GuestPool : Singleton<GuestPool>
 
     public IEnumerator GuestCO()
     {
-        if(isCoolTime)
+        for (int i = 0; i < (UIManager.Instance.starValue * 15); i++)
         {
-            for (int i = 0; i < (UIManager.Instance.starValue * 15); i++)
+            guestList[0].transform.localPosition = pos;
+            guestList[0].SetActive(true);
+            guestList[0].transform.parent = null;
+            guestList.Remove(guestList[0]);
+            guestValue++;
+            guestIndex++;
+            yield return new WaitForSeconds(8f);
+            if (guestList.Count <= 1)
             {
-                isCoolTime = false;
-                guestList[0].transform.localPosition = pos;
-                guestList[0].SetActive(true);
-                guestList[0].transform.parent = null;
-                guestList.Remove(guestList[0]);
-                guestValue++;
-                guestIndex++;
-                yield return new WaitForSeconds(8f);
-                if (guestList.Count <= 1)
-                {
-                    Refill();
-                }
+                Refill();
             }
         }
     }
@@ -71,8 +68,12 @@ public class GuestPool : Singleton<GuestPool>
 
     public void OpenClick()
     {
-        guestCool = GuestCO();
-        StartCoroutine(guestCool);
+        if (isCoolTime)
+        {
+            isCoolTime = false;
+            guestCool = GuestCO();
+            StartCoroutine(guestCool);
+        }
     }
     public void CloseClick()
     {
