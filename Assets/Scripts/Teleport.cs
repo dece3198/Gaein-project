@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.PackageManager.Requests;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -32,6 +33,7 @@ public class Teleport : MonoBehaviour
         if (other.GetComponent<PlayerController>() != null)
         {
             telepoUI.SetActive(false);
+            RequestUI.SetActive(false);
             playerCamera.enabled = true;
             Cursor.lockState = CursorLockMode.Locked;
         }

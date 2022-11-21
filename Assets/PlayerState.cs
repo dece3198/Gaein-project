@@ -4,6 +4,7 @@ using System.Security.Cryptography;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public enum PLAYER_STATE
 {
@@ -30,6 +31,7 @@ public class PlayerIdleState : BaseState<PlayerState>
 
     public override void Exit(PlayerState playerState)
     {
+        playerState.animator.SetBool("Walk", false);
     }
 
 }
@@ -127,6 +129,7 @@ public class PlayerAtkState : BaseState<PlayerState>
             playerState.mainCam.gameObject.SetActive(true);
             playerState.serveCam.gameObject.SetActive(false);
             playerState.ChangeState(PLAYER_STATE.Idle);
+            playerState.StartCoroutine(Return(playerState));
         }
     }
 
@@ -134,6 +137,11 @@ public class PlayerAtkState : BaseState<PlayerState>
     {
     }
 
+    IEnumerator Return(PlayerState playerState)
+    {
+        yield return new WaitForSeconds(5f);
+        SceneManager.LoadScene("Game");
+    }
 }
 
 public class PlayerDieState : BaseState<PlayerState>

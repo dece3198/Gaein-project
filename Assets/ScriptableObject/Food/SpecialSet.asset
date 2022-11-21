@@ -15,11 +15,13 @@ MonoBehaviour:
   foodName: SpecialSet
   foodImage: {fileID: 1553615122, guid: 6ddaa62666a0ea846af05c724233b38e, type: 3}
   prefab: {fileID: 1416990498922723298, guid: ea7e8595ed9b5794a9979bfbe9b59fac, type: 3}
-  Price: 1
+  price: 100000
   recipe:
   - {fileID: 11400000, guid: b8b5e51fa8f9a7b4581b8c57c137a922, type: 2}
   - {fileID: 11400000, guid: 71c5dd2c959ee414f9ce57260962fa90, type: 2}
   - {fileID: 11400000, guid: c997bbf22ddd8694d887773b97214684, type: 2}
   - {fileID: 11400000, guid: 0b0c0b6175c8b3f48b0d0bc600a27c7c, type: 2}
+  isScenes: 0
+  type: 0
   foodType: 3
   goldType: 0
