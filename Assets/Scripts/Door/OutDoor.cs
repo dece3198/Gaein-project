@@ -12,7 +12,7 @@ public class OutDoor : Door
         GKeyImage.gameObject.SetActive(false);
     }
 
-    public void Update()
+    public override void Update()
     {
         if (isOutDoor)
         {
@@ -23,9 +23,7 @@ public class OutDoor : Door
             }
         }
     }
-
-
-    private void OnTriggerEnter(Collider other)
+    public override void OnTriggerEnter(Collider other)
     {
         if(other.GetComponent<PlayerController>() != null)
         {
@@ -34,7 +32,7 @@ public class OutDoor : Door
         }
     }
 
-    private void OnTriggerExit(Collider other)
+    protected void OnTriggerExit(Collider other)
     {
         if(other.GetComponent<PlayerController>() != null)
         {
@@ -42,10 +40,9 @@ public class OutDoor : Door
         }
     }
 
-    public IEnumerator DoorCo()
+    public override IEnumerator DoorCo()
     {
         yield return new WaitForSeconds(5f);
-        animator.SetBool("DoorB", false);
         isOutDoor = false;
     }
 }

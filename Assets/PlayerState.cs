@@ -163,7 +163,7 @@ public class PlayerDieState : BaseState<PlayerState>
 
 
 
-public class PlayerState : Singleton<PlayerState>
+public class PlayerState : MonoBehaviour
 {
     [SerializeField] private Assassin _assassin;
     public Assassin assassin => _assassin;
@@ -175,11 +175,12 @@ public class PlayerState : Singleton<PlayerState>
     public List<TextMeshProUGUI> keyText = new List<TextMeshProUGUI>();
     public Camera mainCam;
     public Camera serveCam;
-
+    Dictionary<string, Vector3> startPositionDict = new Dictionary<string, Vector3>();
+    public List<StartPoint> startPointsarr = new List<StartPoint>();
     public Dictionary<KeyCode, string> keyTextDic = new Dictionary<KeyCode, string>();
-    private new void Awake()
+    private void Awake()
     {
-        base.Awake();
+        DontDestroyOnLoad(this);
         keyUI.gameObject.SetActive(false);
         serveCam.gameObject.SetActive(false);
         _animator = GetComponent<Animator>();
@@ -199,8 +200,20 @@ public class PlayerState : Singleton<PlayerState>
         keyTextDic.Add(KeyCode.S, "S");
         keyTextDic.Add(KeyCode.D, "D");
         keyTextDic.Add(KeyCode.F, "F");
+        SceneManager.sceneLoaded += SetPlayerPosition;
+        StartPoints startPoints = GameObject.Find("StartPointsObj").GetComponent<StartPoints>();
+        startPointsarr = startPoints.Points;
+        // 정보가 가져와서 배열이나 Dic
+        foreach (var point in startPointsarr)
+        {
+            startPositionDict.Add(point.posName, point.startPos);
+        }
     }
-
+    public void SetPlayerPosition(Scene scen, LoadSceneMode mode)
+    {
+        if (startPositionDict[scen.name] == null) {return; }
+        transform.localPosition = startPositionDict[scen.name];
+    }
     public void HitAnimation()
     {
         Time.timeScale = 1f;
