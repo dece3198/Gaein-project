@@ -34,8 +34,8 @@ public class GoldManager : Singleton<GoldManager>
     {
         get 
         {
-            if (silver >= 1000) return silver % 1000;
-            else return silver;
+            if (silver < 1000) return silver;
+            else return silver % 1000;
         }
         set
         {
@@ -58,7 +58,7 @@ public class GoldManager : Singleton<GoldManager>
     public new void Awake()
     {
         base.Awake();
-        Bronze = 500;
+        Bronze = 900;
     }
 
     private void Update()

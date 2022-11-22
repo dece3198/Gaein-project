@@ -142,7 +142,7 @@ public class PlayerAtkState : BaseState<PlayerState>
     {
         yield return new WaitForSeconds(5f);
         SceneManager.LoadScene("Game");
-        GoldManager.Instance.bronze += 50000;
+        GoldManager.Instance.Bronze += 50000;
     }
 }
 

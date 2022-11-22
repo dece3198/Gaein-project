@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class OutDoor : Door
@@ -11,9 +12,8 @@ public class OutDoor : Door
         GKeyImage.gameObject.SetActive(false);
     }
 
-    public override void Update()
+    public void Update()
     {
-        OpenDoor();
         if (isOutDoor)
         {
             if (Input.GetKeyDown(KeyCode.G))
@@ -24,37 +24,25 @@ public class OutDoor : Door
         }
     }
 
-    public override void OpenDoor()
+
+    private void OnTriggerEnter(Collider other)
     {
-        Collider[] target = Physics.OverlapBox(transform.position, range, transform.rotation, layerMask);
-
-        if (target.Length <= 0)
+        if(other.GetComponent<PlayerController>() != null)
         {
-            GKeyImage.gameObject.SetActive(false);
-            return;
-        }
-        else if (target.Length > 0)
-        {
+            isOutDoor = true;
             GKeyImage.gameObject.SetActive(true);
-            for (int i = 0; i < target.Length; i++)
-            {
-                Guest guest = target[i].GetComponent<Guest>();
-                PlayerController playerControllerB = target[i].GetComponent<PlayerController>();
-
-                if (guest != null)
-                {
-                    animator.SetBool("DoorB", true);
-                    StartCoroutine(DoorCo());
-                }
-                if (playerControllerB != null)
-                { 
-                    isOutDoor = true;
-                }
-            }
         }
     }
 
-    public override IEnumerator DoorCo()
+    private void OnTriggerExit(Collider other)
+    {
+        if(other.GetComponent<PlayerController>() != null)
+        {
+            GKeyImage.gameObject.SetActive(false);
+        }
+    }
+
+    public IEnumerator DoorCo()
     {
         yield return new WaitForSeconds(5f);
         animator.SetBool("DoorB", false);

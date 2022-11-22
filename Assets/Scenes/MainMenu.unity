@@ -1159,6 +1159,7 @@ GameObject:
   m_Component:
   - component: {fileID: 263399498}
   - component: {fileID: 263399499}
+  - component: {fileID: 263399500}
   m_Layer: 0
   m_Name: OutDoor (1)
   m_TagString: Untagged
@@ -1195,12 +1196,21 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   GKeyImage: {fileID: 135559930}
   animator: {fileID: 1733629156}
-  layerMask:
-    serializedVersion: 2
-    m_Bits: 2048
-  range: {x: 1, y: 3, z: 0.5}
   isDoor: 0
   isOutDoor: 0
+--- !u!65 &263399500
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 263399497}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 2, z: 0.8}
+  m_Center: {x: 0, y: 0.3, z: -0.2}
 --- !u!1001 &268451538
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1885,6 +1895,7 @@ GameObject:
   m_Component:
   - component: {fileID: 466523197}
   - component: {fileID: 466523198}
+  - component: {fileID: 466523199}
   m_Layer: 0
   m_Name: OutDoor
   m_TagString: Untagged
@@ -1921,12 +1932,21 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   GKeyImage: {fileID: 135559930}
   animator: {fileID: 220792430}
-  layerMask:
-    serializedVersion: 2
-    m_Bits: 2048
-  range: {x: 1, y: 3, z: 0.5}
   isDoor: 0
   isOutDoor: 0
+--- !u!65 &466523199
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 466523196}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 2, z: 0.8}
+  m_Center: {x: 0, y: 0.3, z: -0.2}
 --- !u!4 &534664860 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4711780134734920, guid: a4e06e91d0d2d704aa9dfc7d7a1a635a, type: 3}
@@ -2235,6 +2255,24 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 13
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &741192113 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1691186081, guid: fa940d4eeca573e4f90315a6b05c2986, type: 3}
+  m_PrefabInstance: {fileID: 61582911}
+  m_PrefabAsset: {fileID: 0}
+--- !u!65 &741192116
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 741192113}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 2, z: 0.8}
+  m_Center: {x: 0, y: 0.3, z: -0.2}
 --- !u!1 &788405982
 GameObject:
   m_ObjectHideFlags: 0
@@ -2929,6 +2967,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1040733531}
   - component: {fileID: 1040733532}
+  - component: {fileID: 1040733533}
   m_Layer: 0
   m_Name: OutDoor
   m_TagString: Untagged
@@ -2965,12 +3004,21 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   GKeyImage: {fileID: 135559930}
   animator: {fileID: 268451541}
-  layerMask:
-    serializedVersion: 2
-    m_Bits: 2048
-  range: {x: 1, y: 3, z: 0.5}
   isDoor: 0
   isOutDoor: 0
+--- !u!65 &1040733533
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1040733530}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 2, z: 0.8}
+  m_Center: {x: 0, y: 0.3, z: -0.2}
 --- !u!1 &1042779113
 GameObject:
   m_ObjectHideFlags: 0
@@ -3078,6 +3126,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1107920965}
   - component: {fileID: 1107920966}
+  - component: {fileID: 1107920967}
   m_Layer: 0
   m_Name: OutDoor (1)
   m_TagString: Untagged
@@ -3114,12 +3163,21 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   GKeyImage: {fileID: 135559930}
   animator: {fileID: 279259854}
-  layerMask:
-    serializedVersion: 2
-    m_Bits: 2048
-  range: {x: 1, y: 3, z: 0.5}
   isDoor: 0
   isOutDoor: 0
+--- !u!65 &1107920967
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1107920964}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 2, z: 0.8}
+  m_Center: {x: 0, y: 0.3, z: -0.2}
 --- !u!4 &1117057328 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4096852441948534, guid: cf78b8bf36ea4054ca05e622c8dc2c75, type: 3}
@@ -3300,6 +3358,10 @@ PrefabInstance:
     - target: {fileID: 7776706914922648385, guid: 50d4ee392f9d9e84bbdb1c051e8dca8f, type: 3}
       propertyPath: m_Enabled
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7776706916549914765, guid: 50d4ee392f9d9e84bbdb1c051e8dca8f, type: 3}
+      propertyPath: moveSpeed
+      value: 3.5
       objectReference: {fileID: 0}
     - target: {fileID: 7777669642799565593, guid: 50d4ee392f9d9e84bbdb1c051e8dca8f, type: 3}
       propertyPath: m_Name
@@ -4822,6 +4884,24 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!1 &1612699940 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1691186081, guid: fa940d4eeca573e4f90315a6b05c2986, type: 3}
+  m_PrefabInstance: {fileID: 2072355851}
+  m_PrefabAsset: {fileID: 0}
+--- !u!65 &1612699943
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1612699940}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 2, z: 0.8}
+  m_Center: {x: 0, y: 0.3, z: -0.2}
 --- !u!1001 &1635195073
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4905,6 +4985,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1645302783}
   - component: {fileID: 1645302784}
+  - component: {fileID: 1645302785}
   m_Layer: 0
   m_Name: OutDoor
   m_TagString: Untagged
@@ -4941,12 +5022,21 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   GKeyImage: {fileID: 135559930}
   animator: {fileID: 1453976001}
-  layerMask:
-    serializedVersion: 2
-    m_Bits: 2048
-  range: {x: 1, y: 3, z: 0.5}
   isDoor: 0
   isOutDoor: 0
+--- !u!65 &1645302785
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1645302782}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 2, z: 0.8}
+  m_Center: {x: 0, y: 0.3, z: -0.2}
 --- !u!4 &1649248424 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4397898953052360, guid: 074445f59e8dc374b91a5406b367ac76, type: 3}
@@ -5429,6 +5519,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1831819357}
   - component: {fileID: 1831819358}
+  - component: {fileID: 1831819359}
   m_Layer: 0
   m_Name: OutDoor
   m_TagString: Untagged
@@ -5465,12 +5556,21 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   GKeyImage: {fileID: 135559930}
   animator: {fileID: 1605635416}
-  layerMask:
-    serializedVersion: 2
-    m_Bits: 2048
-  range: {x: 1, y: 3, z: 0.5}
   isDoor: 0
   isOutDoor: 0
+--- !u!65 &1831819359
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1831819356}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 2, z: 0.8}
+  m_Center: {x: 0, y: 0.3, z: -0.2}
 --- !u!4 &1844766302 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4711780134734920, guid: a4e06e91d0d2d704aa9dfc7d7a1a635a, type: 3}

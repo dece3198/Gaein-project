@@ -15,4 +15,6 @@ MonoBehaviour:
   ingredientsName: Carrot
   image: {fileID: -678922167, guid: af2124051ebd66445ac7bb1e5a8114c4, type: 3}
   Count: 5
+  price: 0
+  goldType: 0
   ingredientsType: 8

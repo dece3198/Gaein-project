@@ -1,18 +1,29 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.Build;
 using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
-    GameObject player;
+    public GameObject player;
     public Transform startPos;
+    bool isPlayer = true;
 
-
-    private void Start()
+    private void Update()
     {
-        Debug.Log("µé¾î¿È");
-        player = FindObjectOfType<PlayerController>().gameObject;
-        player.gameObject.transform.localPosition = startPos.position;
+        if (player == null)
+        {
+            isPlayer = true;
+            player = FindObjectOfType<PlayerController>().gameObject;
+        }
+        else
+        {
+            if(isPlayer)
+            {
+                isPlayer = false;
+                player.transform.localPosition = startPos.position;
+            }
+        }
     }
 
 }

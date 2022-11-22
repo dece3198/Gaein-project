@@ -93,6 +93,7 @@ public class ReadyState : BaseState<Assassin>
 
         if(assassin.timeSlider.value <= 0)
         {
+            Time.timeScale = 1f;
             SceneManager.LoadScene("Game");
         }
         if (spaceIndex >= 15)

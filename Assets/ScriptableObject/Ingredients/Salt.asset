@@ -15,4 +15,6 @@ MonoBehaviour:
   ingredientsName: Salt
   image: {fileID: -1312034463, guid: 35844f413a8d61b4982c9b04b10223b6, type: 3}
   Count: 5
+  price: 0
+  goldType: 0
   ingredientsType: 1

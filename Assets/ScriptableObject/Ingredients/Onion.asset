@@ -15,4 +15,6 @@ MonoBehaviour:
   ingredientsName: Onion
   image: {fileID: 497174769, guid: f541bbf00d9f92a459265cbbfae3448e, type: 3}
   Count: 5
+  price: 0
+  goldType: 0
   ingredientsType: 7
