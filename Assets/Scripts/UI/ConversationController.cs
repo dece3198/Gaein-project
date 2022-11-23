@@ -22,23 +22,30 @@ public struct ConversationStruct
 
 public class ConversationController : Singleton<ConversationController>
 {
+    [Header("UI관련")]
     [SerializeField] private Button yesBut;
     [SerializeField] private Button noBut;
     [SerializeField] private SpriteRenderer playerRenderer;
+
+    [Header("Canvas들")]
+    public GameObject menuUI;
+    public Canvas butcherShop;
+    public Canvas canvas;
+
+    [Header("Struct")]
+    public ConversationStruct playerConversationStruct;
+    public ConversationStruct npcConversationStruct;
+
+    [Header("기타")]
     [SerializeField] private int currentIndex = 0;
     [SerializeField] private PlayerCamera PlayerCamera;
     public bool isShopOn = true;
 
-    public GameObject menuUI;
-    public Canvas butcherShop;
-    public Canvas canvas;
-    public ConversationStruct playerConversationStruct;
-    public ConversationStruct npcConversationStruct;
-    
     public Dictionary<Conversation_TYPE, ConversationStruct> talkDic = new Dictionary<Conversation_TYPE, ConversationStruct>();
     public Dictionary<STORE_TYPE, Canvas> shopDic = new Dictionary<STORE_TYPE, Canvas>();
     Animator animator;
     Talk[] talks;
+
     public new void Awake()
     {
         base.Awake();

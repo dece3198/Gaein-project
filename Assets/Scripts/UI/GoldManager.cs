@@ -7,9 +7,11 @@ using System;
 
 public class GoldManager : Singleton<GoldManager>
 {
-    public TextMeshProUGUI goldText;
-    public TextMeshProUGUI silverText;
-    public TextMeshProUGUI bronzeText;
+    [Header("GoldText")]
+    [SerializeField] private TextMeshProUGUI goldText;
+    [SerializeField] private TextMeshProUGUI silverText;
+    [SerializeField] private TextMeshProUGUI bronzeText;
+    [Header("GoldValue")]
     public int gold;
     public int silver;
     public int bronze;
@@ -58,7 +60,7 @@ public class GoldManager : Singleton<GoldManager>
     public new void Awake()
     {
         base.Awake();
-        Bronze = 900;
+        Bronze = 1000;
     }
 
     private void Update()

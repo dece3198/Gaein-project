@@ -165,19 +165,30 @@ public class PlayerDieState : BaseState<PlayerState>
 
 public class PlayerState : MonoBehaviour
 {
+    [Header("적")]
     [SerializeField] private Assassin _assassin;
     public Assassin assassin => _assassin;
-    private Animator _animator;
-    public Animator animator => _animator;
-    public Image keyUI;
-    public StateMachine<PLAYER_STATE, PlayerState> playerMachine = new StateMachine<PLAYER_STATE, PlayerState>();
-    public PLAYER_STATE playerState;
-    public List<TextMeshProUGUI> keyText = new List<TextMeshProUGUI>();
+    [Header("카메라")]
     public Camera mainCam;
     public Camera serveCam;
-    Dictionary<string, Vector3> startPositionDict = new Dictionary<string, Vector3>();
+
+    [Header("리스트들")]
+    public List<TextMeshProUGUI> keyText = new List<TextMeshProUGUI>();
     public List<StartPoint> startPointsarr = new List<StartPoint>();
+
+    [Header("기타")]
+    public Image keyUI;
+
+    [Header("현재상태")]
+    public PLAYER_STATE playerState;
+
+    public StateMachine<PLAYER_STATE, PlayerState> playerMachine = new StateMachine<PLAYER_STATE, PlayerState>();
+    Dictionary<string, Vector3> startPositionDict = new Dictionary<string, Vector3>();
     public Dictionary<KeyCode, string> keyTextDic = new Dictionary<KeyCode, string>();
+
+    private Animator _animator;
+    public Animator animator => _animator;
+
     private void Awake()
     {
         DontDestroyOnLoad(this);
@@ -203,6 +214,7 @@ public class PlayerState : MonoBehaviour
         SceneManager.sceneLoaded += SetPlayerPosition;
         StartPoints startPoints = GameObject.Find("StartPointsObj").GetComponent<StartPoints>();
         startPointsarr = startPoints.Points;
+
         // 정보가 가져와서 배열이나 Dic
         foreach (var point in startPointsarr)
         {

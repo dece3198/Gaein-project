@@ -5,6 +5,7 @@ using static Food;
 
 public class FoodManager : Singleton<FoodManager>
 {
+    [Header("음식관련 리스트")]
     public List<Ingredients> ingredients = new List<Ingredients>();
     public List<Food> foodList = new List<Food>();
     public List<Transform> transforms = new List<Transform>();
@@ -14,6 +15,7 @@ public class FoodManager : Singleton<FoodManager>
 
     Dictionary<FOOD_TYPE, List<GameObject>> poolDic = new Dictionary<Food.FOOD_TYPE, List<GameObject>>();
     Dictionary<FOOD_TYPE, float> foodTime = new Dictionary<FOOD_TYPE, float>();
+
     private int foodNumber = 0;
 
     public new void Awake()
@@ -82,14 +84,20 @@ public class FoodManager : Singleton<FoodManager>
 
         StartCoroutine(CookintCo(food));
     }
+    //사용했던 음식을 다시 받음
     public void EnterPool(Food.FOOD_TYPE foodType,GameObject intputObj)
     {
         intputObj.SetActive(false);
         intputObj.transform.parent = transform;
         poolDic[foodType].Add(intputObj);
     }
+    //음료 주문을 받음
+    public void Drink(Food food)
+    {
+        StartCoroutine(CookintCo(food));
+    }
 
-    //주문을 받으면 15초 뒤에 알맞는 요리타입의 함수가 실행됨
+    //주문을 받으면 알맞은 시간이 지나고 그에 맞는 요리타입의 함수가 실행됨
     IEnumerator CookintCo(Food food)
     {
         GoldManager.Instance.Bronze += food.price;
@@ -100,10 +108,6 @@ public class FoodManager : Singleton<FoodManager>
             case Food.FOOD_TYPE.Beer: FoodType(beer, 1); break;
             case Food.FOOD_TYPE.ApplePie: FoodType(applePie, 2); break;
         }
-    }
-    public void Drink(Food food)
-    {
-        StartCoroutine(CookintCo(food));
     }
 
     //주문한 요리가 랜덤한 위치에 생성이 됨
