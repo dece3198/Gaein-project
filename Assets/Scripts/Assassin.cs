@@ -100,6 +100,7 @@ public class ReadyState : BaseState<Assassin>
         {
             assassin.player.ChangeState(PLAYER_STATE.Avoid);
             assassin.ChangeState(ASSASSIN_STATE.Attack);
+            assassin.timeSlider.gameObject.SetActive(false);
         }
     }
 

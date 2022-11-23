@@ -17,6 +17,7 @@ public class Teleport : MonoBehaviour
         RequestUI.SetActive(false);
     }
 
+    
     private void OnTriggerEnter(Collider other)
     {
         if(other.GetComponent<PlayerController>() != null)

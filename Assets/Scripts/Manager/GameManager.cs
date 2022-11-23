@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEditor.Build;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
@@ -9,21 +10,8 @@ public class GameManager : MonoBehaviour
     public Transform startPos;
     bool isPlayer = true;
 
-    private void Update()
+    private void Awake()
     {
-        if (player == null)
-        {
-            isPlayer = true;
-            player = FindObjectOfType<PlayerController>().gameObject;
-        }
-        else
-        {
-            if(isPlayer)
-            {
-                isPlayer = false;
-                player.transform.localPosition = startPos.position;
-            }
-        }
     }
-
+    
 }

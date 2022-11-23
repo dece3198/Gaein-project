@@ -15,7 +15,9 @@ MonoBehaviour:
   foodName: 
   foodImage: {fileID: 0}
   prefab: {fileID: 0}
-  Price: 100
+  price: 10000000
   recipe: []
+  isScenes: 0
+  type: 0
   foodType: 5
   goldType: 0
