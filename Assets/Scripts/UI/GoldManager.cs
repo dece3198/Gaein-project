@@ -60,7 +60,7 @@ public class GoldManager : Singleton<GoldManager>
     public new void Awake()
     {
         base.Awake();
-        Bronze = 1000;
+        Bronze = 57600;
     }
 
     private void Update()

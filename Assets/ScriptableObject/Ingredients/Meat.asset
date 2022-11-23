@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ingredientsName: Meat
   image: {fileID: -1037816377, guid: f6d36a6bc2646a14db2283309409dd84, type: 3}
-  Count: 5
+  Count: 6
   price: 100
   goldType: 2
   ingredientsType: 2

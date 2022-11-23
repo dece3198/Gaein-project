@@ -5,4 +5,5 @@ using UnityEngine;
 public class FoodPickUp : MonoBehaviour
 {
     public Food food;
+    public bool isEat = true;
 }

@@ -87,13 +87,13 @@ public class EatState : BaseState<Guest>
         guest.StartCoroutine(EatCo(guest));
     }
 
+    public override void Update(Guest guest)
+    {
+    }
     public override void Exit(Guest guest)
     {
     }
 
-    public override void Update(Guest guest)
-    {
-    }
 
     IEnumerator EatCo(Guest guest)
     {
@@ -115,6 +115,7 @@ public class DrinkOrderState : BaseState<Guest>
 {
     public override void Enter(Guest guest)
     {
+        guest.foodPos.transform.GetChild(0).GetComponent<FoodPickUp>().isEat = true;
         FoodManager.Instance.EnterPool(guest.foodPos.transform.GetChild(0).GetComponent<FoodPickUp>().food.foodType, guest.foodPos.transform.GetChild(0).gameObject);
         guest.animator.Play("Order");
         int rand = Random.Range(0, guest.alcoholList.Count);
@@ -170,6 +171,7 @@ public class ReturnState : BaseState<Guest>
     {
         guest.transform.parent = guest.parent;
         guest.animator.Play("Walk");
+        guest.foodPos.transform.GetChild(0).GetComponent<FoodPickUp>().isEat = true;
         FoodManager.Instance.EnterPool(guest.foodPos.transform.GetChild(0).GetComponent<FoodPickUp>().food.foodType, guest.foodPos.transform.GetChild(0).gameObject);
         guest.nav.SetDestination(guest.parent.position);
     }

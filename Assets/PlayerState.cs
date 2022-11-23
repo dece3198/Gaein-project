@@ -174,7 +174,6 @@ public class PlayerState : MonoBehaviour
 
     [Header("리스트들")]
     public List<TextMeshProUGUI> keyText = new List<TextMeshProUGUI>();
-    public List<StartPoint> startPointsarr = new List<StartPoint>();
 
     [Header("기타")]
     public Image keyUI;
@@ -183,7 +182,6 @@ public class PlayerState : MonoBehaviour
     public PLAYER_STATE playerState;
 
     public StateMachine<PLAYER_STATE, PlayerState> playerMachine = new StateMachine<PLAYER_STATE, PlayerState>();
-    Dictionary<string, Vector3> startPositionDict = new Dictionary<string, Vector3>();
     public Dictionary<KeyCode, string> keyTextDic = new Dictionary<KeyCode, string>();
 
     private Animator _animator;
@@ -191,7 +189,6 @@ public class PlayerState : MonoBehaviour
 
     private void Awake()
     {
-        DontDestroyOnLoad(this);
         keyUI.gameObject.SetActive(false);
         serveCam.gameObject.SetActive(false);
         _animator = GetComponent<Animator>();
@@ -202,7 +199,6 @@ public class PlayerState : MonoBehaviour
         playerMachine.AddState(PLAYER_STATE.Attack, new PlayerAtkState());
         playerMachine.AddState(PLAYER_STATE.Die, new PlayerDieState());
         ChangeState(PLAYER_STATE.Idle);
-
         keyTextDic.Add(KeyCode.Q, "Q");
         keyTextDic.Add(KeyCode.W, "W");
         keyTextDic.Add(KeyCode.E, "E");
@@ -211,21 +207,8 @@ public class PlayerState : MonoBehaviour
         keyTextDic.Add(KeyCode.S, "S");
         keyTextDic.Add(KeyCode.D, "D");
         keyTextDic.Add(KeyCode.F, "F");
-        SceneManager.sceneLoaded += SetPlayerPosition;
-        StartPoints startPoints = GameObject.Find("StartPointsObj").GetComponent<StartPoints>();
-        startPointsarr = startPoints.Points;
+    }
 
-        // 정보가 가져와서 배열이나 Dic
-        foreach (var point in startPointsarr)
-        {
-            startPositionDict.Add(point.posName, point.startPos);
-        }
-    }
-    public void SetPlayerPosition(Scene scen, LoadSceneMode mode)
-    {
-        if (startPositionDict[scen.name] == null) {return; }
-        transform.localPosition = startPositionDict[scen.name];
-    }
     public void HitAnimation()
     {
         Time.timeScale = 1f;

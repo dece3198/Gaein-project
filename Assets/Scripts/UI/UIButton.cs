@@ -1,13 +1,7 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-using UnityEngine.Events;
-using UnityEditor.Rendering;
-using Unity.VisualScripting;
-using System;
 
-public class UIButton : Singleton<UIButton>
+public class UIButton : MonoBehaviour
 {
     [SerializeField] private Button clickImage;
     public bool isPie = false;

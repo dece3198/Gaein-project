@@ -55,9 +55,13 @@ public class ActionController : MonoBehaviour
                 Debug.Log("음식 발견");
                 if(Input.GetKeyDown(KeyCode.G))
                 {
-                    hitInfo.transform.GetComponent<FoodPickUp>().gameObject.transform.parent = playerHand;
-                    playerHand.GetChild(0).gameObject.transform.localPosition = handPos;
-                    isHold = true;
+                    if(hitInfo.transform.GetComponent<FoodPickUp>().isEat)
+                    {
+                        hitInfo.transform.GetComponent<FoodPickUp>().isEat = false;
+                        hitInfo.transform.GetComponent<FoodPickUp>().gameObject.transform.parent = playerHand;
+                        playerHand.GetChild(0).gameObject.transform.localPosition = handPos;
+                        isHold = true;
+                    }
                 }
             }
             if(hitInfo.transform.GetComponent<NPC>() != null)
