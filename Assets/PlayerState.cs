@@ -158,7 +158,6 @@ public class PlayerDieState : BaseState<PlayerState>
     public override void Exit(PlayerState playerState)
     {
     }
-
 }
 
 

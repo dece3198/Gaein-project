@@ -12,7 +12,7 @@ public class Chair : MonoBehaviour
 
     private void Update()
     {
-        ChairCollider();
+        GetGuest();
         if (guest != null)
         {
             if (guest.guestState == GUEST_STATE.Return)
@@ -25,7 +25,7 @@ public class Chair : MonoBehaviour
             }
         }
     }
-    public void ChairCollider()
+    public void GetGuest()
     {
         Collider[] target = Physics.OverlapBox(transform.position, boxSize, transform.rotation, layerMask);
 

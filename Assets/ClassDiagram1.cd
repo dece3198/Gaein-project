@@ -45,28 +45,28 @@
   <Class Name="BattleManager" Collapsed="true">
     <Position X="36.25" Y="0.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAACAAAAAAAAAAAAAAAAAAAAABAAAAAAAAAAI=</HashCode>
+      <HashCode>AAQAAAAAACAAAAAAAAAAAAAAAAAEAAABAAAAAAAAAAI=</HashCode>
       <FileName>Assets\Scripts\BattleManager.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Door">
     <Position X="6" Y="6.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>BAQAAAAIAAIBAAAAAAAABAAAAAABAAAAAAAAAEAAAAQ=</HashCode>
+      <HashCode>BAQAAAAAAAABAAAAAAAAAAAAAAABAAAAQAAAAAAAAAQ=</HashCode>
       <FileName>Assets\Scripts\Door\Door.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="OutDoor">
     <Position X="4.25" Y="8" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAQAAAAAAAABAAAAAAIABAAAAAAAAAAAAAAAAAAAAEA=</HashCode>
+      <HashCode>AAQAAAAAAAABAAAAAAIAAAAAAAAAAIAAQAAAAAAAAEA=</HashCode>
       <FileName>Assets\Scripts\Door\OutDoor.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="FoodPickUp" Collapsed="true">
     <Position X="36.25" Y="1.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAI=</HashCode>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAAAAAAAAAAAAI=</HashCode>
       <FileName>Assets\Scripts\FoodPickUp.cs</FileName>
     </TypeIdentifier>
   </Class>
@@ -195,14 +195,14 @@
   <Class Name="FoodManager" Collapsed="true">
     <Position X="25.5" Y="5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAEIACgAAAAAYAgAAAAEQAIAAAYAAAACAIAAAEE=</HashCode>
+      <HashCode>AAAAAAEIACgAIAAAYAgAAAAEQAIAAAYAAAACAIAAAEE=</HashCode>
       <FileName>Assets\Scripts\Manager\FoodManager.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="GameManager" Collapsed="true">
     <Position X="38" Y="1.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAACAAAAAAAAAAAAAAAAAAAAABAAAAAAAAAAI=</HashCode>
+      <HashCode>AAQAAAAAAQAAAAAAAAgAAgAAAAAAAAABAAAAAAAAAEA=</HashCode>
       <FileName>Assets\Scripts\Manager\GameManager.cs</FileName>
     </TypeIdentifier>
   </Class>
@@ -286,8 +286,8 @@
   <Class Name="StartPoint" Collapsed="true">
     <Position X="38" Y="3.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
-      <FileName>Assets\Scripts\Portal\StartPoint.cs</FileName>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAAAAAAAI=</HashCode>
+      <FileName>Assets\ScriptableObject\StartPos\StartPoint.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Teleport" Collapsed="true">

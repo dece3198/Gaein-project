@@ -9,21 +9,22 @@ public class FoodManager : Singleton<FoodManager>
     public List<Ingredients> ingredients = new List<Ingredients>();
     public List<Food> foodList = new List<Food>();
     public List<Transform> transforms = new List<Transform>();
+
     public List<GameObject> stews = new List<GameObject>();
     public List<GameObject> applePie = new List<GameObject>();
-    public List<GameObject> beer = new List<GameObject>();
+    public List<GameObject> beer = new List<GameObject>(); 
 
-    Dictionary<FOOD_TYPE, List<GameObject>> poolDic = new Dictionary<Food.FOOD_TYPE, List<GameObject>>();
+    Dictionary<FOOD_TYPE, List<GameObject>> poolDic = new Dictionary<FOOD_TYPE, List<GameObject>>();
     Dictionary<FOOD_TYPE, float> foodTime = new Dictionary<FOOD_TYPE, float>();
 
     private int foodNumber = 0;
-
+    private int poolCount = 5;
     public new void Awake()
     {
         base.Awake();
-        poolDic.Add(Food.FOOD_TYPE.Stew, stews);
-        poolDic.Add(Food.FOOD_TYPE.ApplePie, applePie);
-        poolDic.Add(Food.FOOD_TYPE.Beer, beer);
+        poolDic.Add(FOOD_TYPE.Stew, stews);
+        poolDic.Add(FOOD_TYPE.ApplePie, applePie);
+        poolDic.Add(FOOD_TYPE.Beer, beer);
         foodTime.Add(FOOD_TYPE.Stew, 15f);
         foodTime.Add(FOOD_TYPE.ApplePie, 15f);
         foodTime.Add(FOOD_TYPE.Beer, 5f);
@@ -33,7 +34,7 @@ public class FoodManager : Singleton<FoodManager>
     {
         for (int i = 0; i < foodList.Count; i++)
         {
-            for(int j = 0; j < 5; j++)
+            for(int j = 0; j < poolCount; j++)
             {
                 GameObject gameObject = Instantiate(foodList[i].prefab);
                 switch (i)
@@ -85,7 +86,7 @@ public class FoodManager : Singleton<FoodManager>
         StartCoroutine(CookintCo(food));
     }
     //사용했던 음식을 다시 받음
-    public void EnterPool(Food.FOOD_TYPE foodType,GameObject intputObj)
+    public void EnterPool(FOOD_TYPE foodType,GameObject intputObj)
     {
         intputObj.SetActive(false);
         intputObj.transform.parent = transform;
@@ -104,14 +105,14 @@ public class FoodManager : Singleton<FoodManager>
         yield return new WaitForSeconds(foodTime[food.foodType]);
         switch (food.foodType)
         {
-            case Food.FOOD_TYPE.Stew : FoodType(stews, 0); break;
-            case Food.FOOD_TYPE.Beer: FoodType(beer, 1); break;
-            case Food.FOOD_TYPE.ApplePie: FoodType(applePie, 2); break;
+            case Food.FOOD_TYPE.Stew : ExitPool(stews, 0); break;
+            case Food.FOOD_TYPE.Beer: ExitPool(beer, 1); break;
+            case Food.FOOD_TYPE.ApplePie: ExitPool(applePie, 2); break;
         }
     }
 
     //주문한 요리가 랜덤한 위치에 생성이 됨
-    private GameObject FoodType(List<GameObject> list, int number)
+    public GameObject ExitPool(List<GameObject> list, int number)
     {
         if(list.Count <= foodNumber)
         {
